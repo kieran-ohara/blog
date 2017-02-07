@@ -1,0 +1,23 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "kieranbamforth.me"
+      }
+    },
+    "wwwbucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "www.kieranbamforth.me"
+      }
+    },
+    "bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "kieranbamforth.me"
+      }
+    }
+  }
+}
