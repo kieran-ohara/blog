@@ -9,6 +9,7 @@ for index, bucketName in enumerate(bucketNames):
     bucketResourceName = 'bucket{}'.format(index)
     bucket = s3.Bucket(bucketResourceName)
     bucket.BucketName = bucketName
+
     template.add_resource(bucket)
 
     bucketPolicyDocument = {
@@ -26,6 +27,7 @@ for index, bucketName in enumerate(bucketNames):
     bucketPolicy = s3.BucketPolicy(bucketPolicyResourceName)
     bucketPolicy.Bucket = bucketName
     bucketPolicy.PolicyDocument = bucketPolicyDocument
+
     template.add_resource(bucketPolicy)
 
 print(template.to_json())
