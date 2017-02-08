@@ -1,9 +1,11 @@
-from troposphere import Template
+from troposphere import Template, GetAtt
 import troposphere.s3 as s3
+import troposphere.route53 as r53
 
 template = Template()
 
 bucketNames = ['kieranbamforth.me', 'www.kieranbamforth.me']
+hostedZoneId = 'Z36PFUEKT1FWSA'
 
 for index, bucketName in enumerate(bucketNames):
     bucketWebsiteConfiguration = s3.WebsiteConfiguration()
@@ -39,5 +41,17 @@ for index, bucketName in enumerate(bucketNames):
 
     template.add_resource(bucketPolicy)
 
+    aliasTarget = r53.AliasTarget()
+    aliasTarget.HostedZoneId = hostedZoneId
+    aliasTarget.DNSName = GetAtt(bucketResourceName, 'WebsiteURL')
+
+    recordSetResourceName = 'recordSet{}'.format(index)
+    recordSet = r53.RecordSetType(recordSetResourceName)
+    recordSet.AliasTarget = aliasTarget
+    recordSet.HostedZoneId = hostedZoneId
+    recordSet.Name = bucketName + '.'
+    recordSet.Type = 'A'
+
+    template.add_resource(recordSet)
 
 print(template.to_json())
