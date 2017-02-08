@@ -6,20 +6,29 @@ template = Template()
 bucketNames = ['kieranbamforth.me', 'www.kieranbamforth.me']
 
 for index, bucketName in enumerate(bucketNames):
+    bucketWebsiteConfiguration = s3.WebsiteConfiguration()
+    if index == 0:
+        redirect = s3.RedirectAllRequestsTo()
+        redirect.HostName = 'www.kieranbamforth.me'
+        bucketWebsiteConfiguration.RedirectAllRequestsTo = redirect
+    elif index == 1:
+        bucketWebsiteConfiguration.IndexDocument = 'index.html'
+        bucketWebsiteConfiguration.ErrorDocument = 'error.html'
+
     bucketResourceName = 'bucket{}'.format(index)
     bucket = s3.Bucket(bucketResourceName)
     bucket.BucketName = bucketName
-
+    bucket.WebsiteConfiguration = bucketWebsiteConfiguration
     template.add_resource(bucket)
 
     bucketPolicyDocument = {
-            "Version": "2012-10-17",
-            "Statement": [{
-                "Sid": "Allow Public Access to All Objects",
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::{}/*".format(bucketName)
+            'Version': '2012-10-17',
+            'Statement': [{
+                'Sid': 'Allow Public Access to All Objects',
+                'Effect': 'Allow',
+                'Principal': '*',
+                'Action': 's3:GetObject',
+                'Resource': 'arn:aws:s3:::{}/*'.format(bucketName)
                 }]
             }
 
@@ -29,5 +38,6 @@ for index, bucketName in enumerate(bucketNames):
     bucketPolicy.PolicyDocument = bucketPolicyDocument
 
     template.add_resource(bucketPolicy)
+
 
 print(template.to_json())
