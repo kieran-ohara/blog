@@ -1,8 +1,10 @@
 INFRASTRUCTURE_JSON=${CURDIR}/infrastructure.json
 STACK_NAME=jekyll-blog
 
-blog:
+deploy:
 	cd src && jekyll build
+	aws s3 rm s3://www.kieranbamforth.me --recursive
+	aws s3 cp src/_site s3://www.kieranbamforth.me --recursive
 
 infrastructure: 
 	python infrastructure.py > ${INFRASTRUCTURE_JSON}
