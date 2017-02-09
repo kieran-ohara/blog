@@ -23,27 +23,28 @@ for index, bucketName in enumerate(bucketNames):
     bucket.WebsiteConfiguration = bucketWebsiteConfiguration
     template.add_resource(bucket)
 
-    bucketPolicyDocument = {
-            'Version': '2012-10-17',
-            'Statement': [{
-                'Sid': 'Allow Public Access to All Objects',
-                'Effect': 'Allow',
-                'Principal': '*',
-                'Action': 's3:GetObject',
-                'Resource': 'arn:aws:s3:::{}/*'.format(bucketName)
-                }]
-            }
+    if index == 1:
+        bucketPolicyDocument = {
+                'Version': '2012-10-17',
+                'Statement': [{
+                    'Sid': 'Allow Public Access to All Objects',
+                    'Effect': 'Allow',
+                    'Principal': '*',
+                    'Action': 's3:GetObject',
+                    'Resource': 'arn:aws:s3:::{}/*'.format(bucketName)
+                    }]
+                }
 
-    bucketPolicyResourceName = 'bucketPolicy{}'.format(index)
-    bucketPolicy = s3.BucketPolicy(bucketPolicyResourceName)
-    bucketPolicy.Bucket = bucketName
-    bucketPolicy.PolicyDocument = bucketPolicyDocument
+        bucketPolicyResourceName = 'bucketPolicy{}'.format(index)
+        bucketPolicy = s3.BucketPolicy(bucketPolicyResourceName)
+        bucketPolicy.Bucket = bucketName
+        bucketPolicy.PolicyDocument = bucketPolicyDocument
 
-    template.add_resource(bucketPolicy)
+        template.add_resource(bucketPolicy)
 
     aliasTarget = r53.AliasTarget()
-    aliasTarget.HostedZoneId = hostedZoneId
-    aliasTarget.DNSName = GetAtt(bucketResourceName, 'WebsiteURL')
+    aliasTarget.HostedZoneId = 'Z1BKCTXD74EZPE'
+    aliasTarget.DNSName = 's3-website-eu-west-1.amazonaws.com'
 
     recordSetResourceName = 'recordSet{}'.format(index)
     recordSet = r53.RecordSetType(recordSetResourceName)
