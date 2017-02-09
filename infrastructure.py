@@ -1,4 +1,4 @@
-from troposphere import Template, GetAtt
+from troposphere import Template, GetAtt, Ref
 import troposphere.s3 as s3
 import troposphere.route53 as r53
 
@@ -11,7 +11,7 @@ for index, bucketName in enumerate(bucketNames):
     bucketWebsiteConfiguration = s3.WebsiteConfiguration()
     if index == 0:
         redirect = s3.RedirectAllRequestsTo()
-        redirect.HostName = 'www.kieranbamforth.me'
+        redirect.HostName = Ref('bucket1')
         bucketWebsiteConfiguration.RedirectAllRequestsTo = redirect
     elif index == 1:
         bucketWebsiteConfiguration.IndexDocument = 'index.html'
