@@ -6,6 +6,9 @@ deploy:
 	aws s3 rm s3://www.kieranbamforth.me --recursive
 	aws s3 cp src/_site s3://www.kieranbamforth.me --recursive
 
+serve:
+	cd src && jekyll serve
+
 infrastructure: 
 	python infrastructure.py > ${INFRASTRUCTURE_JSON}
 	aws cloudformation ${MODE}-stack \
