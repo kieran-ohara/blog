@@ -7,7 +7,7 @@ deploy:
 	aws s3 cp src/_site s3://www.kieranbamforth.me --recursive
 
 serve:
-	cd src && jekyll serve
+	cd src && jekyll serve --drafts
 
 infrastructure: 
 	python infrastructure.py > ${INFRASTRUCTURE_JSON}
