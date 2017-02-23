@@ -36,6 +36,7 @@ What I learned from Boxen
 [github drop boxen]: https://github.com/boxen/boxen/issues/197 "GitHub announced they were no longer maintain Boxen"
 
 [boxen 2013 website screenshot]: /images/boxen-website-2013-02-18.png
+[boxen nginx octocat]: /images/boxen-nginx-octocat.png
 
 [boxen fork]: https://github.com/kieran-bamforth/our-boxen
 [boxen shared modules]: https://github.com/boxen?utf8=%E2%9C%93&q=puppet-&type=&language=
