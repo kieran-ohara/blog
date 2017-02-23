@@ -22,7 +22,10 @@ What I learned from Boxen
 * I no longer had to install applications from DMGs.
 * Vim extensions, and introducing me to Vim 
 
-* [NGINX / DNSMasq. Not friendly to local services. Opinionated][boxen and localhost]
+* A brainchild of GitHub; it&rsquo;s no surprise that Boxen has opinions about &ldquo;how to do things&rdquo;. Do you have any `*.dev` entries in your `hosts` file, mapped to local projects? Then brace yourself&mdash;as running `$ boxen` for the first time transfigures them *all* into this(!):
+![A screenshot of a local project after running Boxen][boxen nginx octocat]
+* Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about actually &ldquo;making it so&rdquo;.
+* [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat of a chore.
 * Very verbose (unclear) output.
 * Homebrew was not installed to the default place, brew doctor was frustrating.
 * Randomly work some days, randomly stop other times.
