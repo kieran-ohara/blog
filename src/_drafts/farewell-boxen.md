@@ -26,6 +26,7 @@ What I learned from Boxen
 ![A screenshot of a local project after running Boxen][boxen nginx octocat]
 This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: it clobbers `localhost:80` [by default][boxen nginx port 80], and all `*.dev` requests get resolved to it via [dnsmasq][boxen dnsmasq]. Basically, should you not be employed by GitHub, expect to reverse engineer Boxen from time to time.
 * Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about actually &ldquo;making it so&rdquo;.
+* Boxen &ldquo;vendor-locks&rdquo; you into using it&mdash;it sits in between you and a plethora of open-source tools like Homebrew. This means that instead of configuring Homebrew [the Homebrew way][homebrew bundle], you have to configure it [the Boxen way][boxen homebrew]&#8482;. Firstly of all, this renders your configuration useless outside of the realm of Boxen. Second, your ability to use open-source updates is limited by how fast Boxen can implement them.
 * [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat of a chore.
 * Very verbose (unclear) output.
 * Homebrew was not installed to the default place, brew doctor was frustrating.
@@ -42,6 +43,8 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen dnsmasq dev requests]: https://github.com/boxen/puppet-dnsmasq/blob/master/templates/dnsmasq.conf.erb#L5:L6
 
 [boxen fork]: https://github.com/kieran-bamforth/our-boxen
+
+[boxen homebrew]: https://github.com/boxen/puppet-homebrew
 
 [boxen nginx]: https://github.com/boxen/puppet-nginx
 [boxen nginx octocat]: /images/boxen-nginx-octocat.png
@@ -66,6 +69,8 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen upstream merge 10]:https://github.com/kieran-bamforth/our-boxen/commit/aa99351da2a47102a2a53f2d18d91299ab1e1cfb "2016-09-18: Merge upstream."
 
 [github drop boxen]: https://github.com/boxen/boxen/issues/197 "GitHub announced they were no longer maintain Boxen"
+
+[homebrew bundle]: https://github.com/Homebrew/homebrew-bundle
 
 [puppet]: https://puppet.com/
 [puppet catalog compilation]: https://docs.puppet.com/puppet/4.9/subsystem_catalog_compilation.html
