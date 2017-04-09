@@ -4,25 +4,12 @@ title:  "Farewell Boxen <3"
 date:   2017-02-10 18:29:52 +0000
 categories: automation developer-tools shell
 ---
-Hello shell scripts.
-
-New years resolution. Drop Boxen.
-
-2 years ago, I was lucky enough to be given a shiny new MacBook by my then employer. That night&mdash;like any other developer with a new toy&mdash; I tore through the cellophane wrapping (mmmmme gusta), smashed my way through the box, and had the lid of the laptop open with the iconic chime before (After all, any new opening of an apple product is a ritual).
-
-And then it occurred to me, it was Mac setup time. As a fresh faced graduate that had recently learned about the joys of Puppet automation, a part of me wanted to treat this mac as cattle, not a pet. Quite radical for me at the time, as much as I hate to admit it, my Mac was my baby. It had all the software and configuration set just perfectly so, and here I was with a brand new Mac where I would have to start all over again&hellip; (I mean who wants to transfer old files and settings on to a fresh laptop? eww).
-
-So I did a quick Google search and there I was introduced to Boxen.
+If you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can provision your Mac OSX machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] that you provide&mdash;thus affording you all of the advantages typically associated with [Infrastructure as Code][ioc wiki]:
 ![A screenshot of Boxen&rsquo;s website from February, 2013][boxen 2013 website screenshot]
-The timing could not have been perfect enough. A graduate developer at the time, I was excited to learn that Boxen used Puppet. I can still remember the excitement 
-
-What I learned from Boxen
-* env all the things.
-* Puppet modules, and puppet in general.
-* I no longer had to install applications from DMGs.
-* Vim extensions, and introducing me to Vim 
-
-* A brainchild of GitHub; it&rsquo;s no surprise that Boxen has opinions about &ldquo;how to do things&rdquo;. Do you have any `*.dev` entries in your `hosts` file, mapped to local projects? Then brace yourself&mdash;as running `$ boxen` for the first time, will transfigure them into this:
+* You have full control over the apps and files on your machine: you get to choose *what* gets installed, and *where*. (Unlike backup services, which appear to just back up and restore *everything*\.
+* Configuration files (such as your `.vimrc`) are committed to a single repository, instead of existing arbitrarily on your hard drive. 
+However:
+* A brainchild of GitHub, it&rsquo;s no surprise that Boxen has opinions about &ldquo;how to do things&rdquo;. Do you have any `*.dev` entries in your `hosts` file, mapped to local projects? Then brace yourself&mdash;as running `$ boxen` for the first time, will transfigure them into this:
 ![A screenshot of a local project after running Boxen][boxen nginx octocat]
 This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: it clobbers `localhost:80` [by default][boxen nginx port 80], and all `*.dev` requests get resolved to it via [dnsmasq][boxen dnsmasq]. Basically, should you not be employed by GitHub, expect to reverse engineer Boxen from time to time.
 * Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about actually &ldquo;making it so&rdquo;.
@@ -35,7 +22,7 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 * [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat a chore.
 * Interestingly, the last "nail in the coffin" didn&rsquo;t come from me; [it came from GitHub themselves][github drop boxen].
 
-[github drop boxen]: https://github.com/boxen/boxen/issues/197 "GitHub announced they were no longer maintain Boxen"
+[backblaze]: https://www.backblaze.com/
 
 [boxen 2013 website screenshot]: /images/boxen-website-2013-02-18.png
 
@@ -49,6 +36,8 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen nginx]: https://github.com/boxen/puppet-nginx
 [boxen nginx octocat]: /images/boxen-nginx-octocat.png
 [boxen nginx port 80]: https://github.com/boxen/puppet-nginx/blob/master/manifests/init.pp#L5
+
+[boxen minecraft]: https://github.com/boxen/puppet-minecraft
 
 [boxen project]: https://github.com/kieran-bamforth/our-boxen/tree/master/modules/projects
 [boxen project port]: https://github.com/kieran-bamforth/our-boxen/blob/master/modules/projects/templates/shared/nginx.conf.erb#L2
@@ -72,7 +61,12 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 
 [homebrew bundle]: https://github.com/Homebrew/homebrew-bundle
 
+[ioc wiki]: https://en.wikipedia.org/wiki/Infrastructure_as_Code
+
+[mikemcqauid]: https://github.com/MikeMcQuaid
+
 [puppet]: https://puppet.com/
 [puppet catalog compilation]: https://docs.puppet.com/puppet/4.9/subsystem_catalog_compilation.html
+[puppet manifest files]: https://docs.puppet.com/puppet/latest/lang_summary.html#files
 
 [remove nginx dnsmasq]: https://github.com/kieran-bamforth/our-boxen/commit/9b598e979db5adfc0fe1796b487f242f63c0f95d
