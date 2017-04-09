@@ -6,7 +6,7 @@ categories: automation developer-tools shell
 ---
 If you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can provision your Mac OSX machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] that you provide&mdash;thus affording you all of the advantages typically associated with [Infrastructure as Code][ioc wiki]:
 ![A screenshot of Boxen&rsquo;s website from February, 2013][boxen 2013 website screenshot]
-* You have full control over the apps and files on your machine: you get to choose *what* gets installed, and *where*. (Unlike backup services, which appear to just back up and restore *everything*\.
+* You have full control over the apps and files on your machine: you get to choose *what* gets installed, and *where*. (Unlike backup services, which appear to just back up and restore *everything*).
 * Configuration files (such as your `.vimrc`) are committed to a single repository, instead of existing arbitrarily on your hard drive. 
 However:
 * A brainchild of GitHub, it&rsquo;s no surprise that Boxen has opinions about &ldquo;how to do things&rdquo;. Do you have any `*.dev` entries in your `hosts` file, mapped to local projects? Then brace yourself&mdash;as running `$ boxen` for the first time, will transfigure them into this:
