@@ -4,23 +4,42 @@ title:  "Farewell Boxen <3"
 date:   2017-02-10 18:29:52 +0000
 categories: automation developer-tools shell
 ---
-If you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can provision your Mac OSX machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] that you provide&mdash;thus affording you all of the advantages typically associated with [Infrastructure as Code][ioc wiki]:
-![A screenshot of Boxen&rsquo;s website from February, 2013][boxen 2013 website screenshot]
-* You have full control over the apps and files on your machine: you get to choose *what* gets installed, and *where*. (Unlike backup services, which appear to just back up and restore *everything*).
-* Configuration files (such as your `.vimrc`) are committed to a single repository, instead of existing arbitrarily on your hard drive. 
-However:
+## Meet Boxen.
+
+Incase you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can setup your macOS machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] you provide&mdash;thus affording you all the advantages of [Infrastructure as Code][ioc wiki]:
+
+* You have full control over what gets installed, and *where*. This is unlike backup services I&rsquo;ve played with, which appear to just back up and restore *everything* on your hard drive.
+* Configuration files (such as your `.vimrc`) can be committed to source control. This allows you to experiment with different setups, `$ git checkout` if it goes all wrong, and ultimately `$ git commit` to new and *exciting* ways of working.
+* If you can automate your setup on one macOS machine, then you can automate your setup on *any* macOS machine! &ldquo;Setting up&rdquo; becomes a case of checking out your Boxen repo, and running the `$ boxen` command.
+
+In fact, Boxen worked so well for me, it was part of my workflow for two years. I&rsquo;d:
+
+1. `$ git commit && git push` new setups on my Laptop A.
+2. `$ git pull && boxen` on my own Laptop B.
+3. Marvel how fast Laptop B became a clone of Laptop A!
+
+This workflow enabled me to transition between two unconnected machines seamlessly, in a way that *encouraged* me to play with new tools and configurations.
+
+## By developers, for developers!
+
+In my opinion, Boxen&rsquo;s greatest feature is that it provides a free [&ldquo;App-Store&rdquo;][boxen repo list] for developer tools. You&rsquo;ll find tools of which you are familiar, but you&rsquo;ll also find tools of which you are not. And it&rsquo;s here&mdash;in the latter category&mdash;where comes joy of using Boxen. A few of my favourite discoveries include:
+
+- [Tmux][tmux wiki]: how many terminal windows or tabs do you have open right now? If your answer is > 1, you could probably <s>change your life</s> benefit by trying out Tmux. Tmux is like a [tiling window manager][twm wiki], but for your terminal.
+- [Vim][vim wiki]: okay, you&rsquo;ve probably heard about Vim&hellip; However Boxen&rsquo;s standard installation includes Vim plus several useful plugins, which over time encouraged me to drop hefty IDEs, and switch to Vim.
+- [Hub][hub github]: Is GitHub part of your workflow? This CLI tool from GitHub enables you to raise pull requests&mdash;and more&mdash;right from the comfort of your command line.
+- [Flux][flux]: Research suggests we should avoid gadgets before bed, to [stop light interfering with our sleep patterns][cnn sleep]. As night approaches, Flux reduces the blue light emmitted from your screen to ease your eyes into sleeping.
+
+
+## But then came the woes.
+
 * A brainchild of GitHub, it&rsquo;s no surprise that Boxen has opinions about &ldquo;how to do things&rdquo;. Do you have any `*.dev` entries in your `hosts` file, mapped to local projects? Then brace yourself&mdash;as running `$ boxen` for the first time, will transfigure them into this:
 ![A screenshot of a local project after running Boxen][boxen nginx octocat]
 This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: it clobbers `localhost:80` [by default][boxen nginx port 80], and all `*.dev` requests get resolved to it via [dnsmasq][boxen dnsmasq]. Basically, should you not be employed by GitHub, expect to reverse engineer Boxen from time to time.
 * Boxen &ldquo;gatekeeps&rdquo; the suite of open-source tools it provides; configuring them via [Puppet modules][boxen homebrew] instead of [the tools&rsquo; norms][homebrew bundle]. Your tools&rsquo; configuration therefore is useless outside of the realm of Boxen. Furthermore, your ability to use the open-source tools&rsquo; updates is limited by how fast the Puppet modules can implement them.
 * Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about &ldquo;making it so&rdquo;.
 * [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat of a chore.
-* Very verbose (unclear) output.
-* Homebrew was not installed to the default place, brew doctor was frustrating.
-* Randomly work some days, randomly stop other times.
-* Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen update`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about actually &ldquo;making it so&rdquo;.
-* [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat a chore.
-* Interestingly, the last "nail in the coffin" didn&rsquo;t come from me; [it came from GitHub themselves][github drop boxen].
+
+## Boxen is dead, long live Homebrew!
 
 [backblaze]: https://www.backblaze.com/
 
@@ -38,6 +57,8 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen nginx port 80]: https://github.com/boxen/puppet-nginx/blob/master/manifests/init.pp#L5
 
 [boxen minecraft]: https://github.com/boxen/puppet-minecraft
+
+[boxen repo list]: https://github.com/boxen?q=puppet
 
 [boxen project]: https://github.com/kieran-bamforth/our-boxen/tree/master/modules/projects
 [boxen project port]: https://github.com/kieran-bamforth/our-boxen/blob/master/modules/projects/templates/shared/nginx.conf.erb#L2
@@ -57,9 +78,15 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen upstream merge 9]:https://github.com/kieran-bamforth/our-boxen/commit/26454fdaeb277fde70d4bbdbf52fc2b1bd4b80a1 "2016-05-10: Merge master."
 [boxen upstream merge 10]:https://github.com/kieran-bamforth/our-boxen/commit/aa99351da2a47102a2a53f2d18d91299ab1e1cfb "2016-09-18: Merge upstream."
 
+[cnn sleep]: https://edition.cnn.com/2016/10/31/health/kids-sleep-screens-tech/index.html
+
+[flux]: https://justgetflux.com/
+
 [github drop boxen]: https://github.com/boxen/boxen/issues/197 "GitHub announced they were no longer maintain Boxen"
 
 [homebrew bundle]: https://github.com/Homebrew/homebrew-bundle
+
+[hub github]: https://github.com/github/hub
 
 [ioc wiki]: https://en.wikipedia.org/wiki/Infrastructure_as_Code
 
@@ -70,3 +97,8 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [puppet manifest files]: https://docs.puppet.com/puppet/latest/lang_summary.html#files
 
 [remove nginx dnsmasq]: https://github.com/kieran-bamforth/our-boxen/commit/9b598e979db5adfc0fe1796b487f242f63c0f95d
+
+[tmux wiki]: https://en.wikipedia.org/wiki/Tmux
+[twm wiki]: https://en.wikipedia.org/wiki/Tiling_window_manager
+
+[vim wiki]: https://en.wikipedia.org/wiki/Vim_(text_editor)
