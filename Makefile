@@ -2,12 +2,12 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure.json
 STACK_NAME=jekyll-blog
 
 deploy:
-	cd src && bundle exec jekyll build
+	bundle exec jekyll build --source=src --destination=src/_site
 	aws s3 rm s3://www.kieranbamforth.me --recursive
 	aws s3 cp src/_site s3://www.kieranbamforth.me --recursive
 
 serve:
-	cd src && bundle exec jekyll serve --drafts
+	bundle exec jekyll serve --source=src --destination=src/_site --drafts
 
 infrastructure:
 	python infrastructure.py > ${INFRASTRUCTURE_JSON}
