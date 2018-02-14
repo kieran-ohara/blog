@@ -41,7 +41,9 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 
 ## Boxen is dead, long live Homebrew!
 
-[backblaze]: https://www.backblaze.com/
+The biggest nail in the coffin for Boxen came from [@MikeMcQuaid][mikemcquaid], then maintainer of the project. In a [GitHub issue][github drop boxen], he states that GitHub is no longer interested in maintaining Boxen, and furthermore he is a full time maintainer of the [Homebrew][homebrew] project. Homebrew can do all of the things people would reasonably expect form Boxen (check out [Brewfiles][brewfile usage] for keeping your dependencies under source control!), all without dependencies on Puppet.
+
+[backblaze]: https://www.backblaze.com/ "Backblaze backup software"
 
 [boxen 2013 website screenshot]: /images/boxen-website-2013-02-18.png
 
@@ -78,6 +80,7 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [boxen upstream merge 9]:https://github.com/kieran-bamforth/our-boxen/commit/26454fdaeb277fde70d4bbdbf52fc2b1bd4b80a1 "2016-05-10: Merge master."
 [boxen upstream merge 10]:https://github.com/kieran-bamforth/our-boxen/commit/aa99351da2a47102a2a53f2d18d91299ab1e1cfb "2016-09-18: Merge upstream."
 
+[brewfile usage]: https://github.com/Homebrew/homebrew-bundle#usage
 [cnn sleep]: https://edition.cnn.com/2016/10/31/health/kids-sleep-screens-tech/index.html
 
 [flux]: https://justgetflux.com/
@@ -85,6 +88,7 @@ This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: i
 [github drop boxen]: https://github.com/boxen/boxen/issues/197 "GitHub announced they were no longer maintain Boxen"
 
 [homebrew bundle]: https://github.com/Homebrew/homebrew-bundle
+[homebrew]: https://brew.sh/
 
 [hub github]: https://github.com/github/hub
 
