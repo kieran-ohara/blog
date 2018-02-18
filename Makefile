@@ -3,8 +3,8 @@ STACK_NAME=jekyll-blog
 
 deploy:
 	bundle exec jekyll build
-	aws s3 rm s3://www.kieranbamforth.me --recursive
-	aws s3 cp src/_site s3://www.kieranbamforth.me --recursive
+	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
+	aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive
 
 serve:
 	bundle exec jekyll serve --drafts
