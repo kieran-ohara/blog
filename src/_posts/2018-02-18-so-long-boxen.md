@@ -3,8 +3,6 @@ layout: post
 title:  So long, Boxen!
 ---
 
-## Meet Boxen.
-
 In case you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can setup your macOS machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] you provide&mdash;thus affording you all the advantages of [Infrastructure as Code][ioc wiki]:
 
 * You have full control over what gets installed, and *where*. This is unlike backup services I&rsquo;ve played with, which appear to just back up and restore *everything* on your hard drive.
