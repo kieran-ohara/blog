@@ -20,7 +20,11 @@ chalk-unlink:
 deploy:
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
-	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive
+	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive --exclude "*.html"
+	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.html" \
+		--content-type "text/html;charset=UTF-8"
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
