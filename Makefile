@@ -2,20 +2,22 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
-CHALK_FILES=_assets _layouts _includes _my_tags 404.html about.html feed.xml index.html
+CHALK_FILES=_assets _layouts _my_tags 404.html about.html feed.xml index.html
+CHALK_INCLUDES=_includes/image.html _includes/javascripts.html _includes/navigation.html _includes/svg-icon.html
 
 define chalk_link_template
-ln -s ${CHALK_DIR}/$(1) src/$(1);
+ln -s ${CHALK_DIR}/$(1) $(2)/$(1);
 endef
 chalk-link:
-	$(foreach file, $(CHALK_FILES), $(call chalk_link_template,$(file)))
-	ln -s ${CHALK_DIR}/Gemfile ${CURDIR}/Gemfile
+	$(foreach file, $(CHALK_FILES), $(call chalk_link_template,$(file),src))
+	$(foreach file, $(CHALK_INCLUDES), $(call chalk_link_template,$(file),src))
 
 define chalk_unlink_template
-test -e src/$(1) && rm src/$(1);
+test -e $(2)/$(1) && rm $(2)/$(1);
 endef
 chalk-unlink:
-	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file)))
+	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file),src))
+	$(foreach file, $(CHALK_INCLUDES), $(call chalk_unlink_template,$(file),src))
 
 deploy:
 	bundle exec jekyll build --config ${CONFIG_FILES}
