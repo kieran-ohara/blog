@@ -20,3 +20,11 @@ markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
+
+# Chalk settings.
+name: kieranbamforth.me
+social:
+    github: kieran-bamforth
+    twitter: kieran_bamforth
+    email: hello@kieranbamforth.me
+    instagram: irkb
