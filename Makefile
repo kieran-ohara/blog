@@ -1,4 +1,4 @@
-INFRASTRUCTURE_JSON=${CURDIR}/infrastructure.json
+INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 
 deploy:
@@ -12,7 +12,7 @@ serve:
 infrastructure:
 	virtualenv venv
 	venv/bin/pip install -r Requirements.txt
-	venv/bin/python infrastructure.py > ${INFRASTRUCTURE_JSON}
+	venv/bin/python infrastructure/infrastructure.py > ${INFRASTRUCTURE_JSON}
 	venv/bin/aws cloudformation ${MODE}-stack \
 		--stack-name ${STACK_NAME} \
 		--template-body file://${INFRASTRUCTURE_JSON}
@@ -20,3 +20,5 @@ infrastructure:
 destroy-infrastructure:
 	venv/bin/aws cloudformation delete-stack \
 		--stack-name ${STACK_NAME}
+
+.PHONY: infrastructure
