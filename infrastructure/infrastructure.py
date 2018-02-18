@@ -15,7 +15,7 @@ for index, bucketName in enumerate(bucketNames):
         bucketWebsiteConfiguration.RedirectAllRequestsTo = redirect
     elif index == 1:
         bucketWebsiteConfiguration.IndexDocument = 'index.html'
-        bucketWebsiteConfiguration.ErrorDocument = 'error.html'
+        bucketWebsiteConfiguration.ErrorDocument = 'blog/404.html'
 
     bucketResourceName = 'bucket{}'.format(index)
     bucket = s3.Bucket(bucketResourceName)
