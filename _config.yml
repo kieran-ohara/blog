@@ -8,7 +8,7 @@ title: kieranbamforth.me
 description: A braindump, mostly.
 url: http://www.kieranbamforth.me
 baseurl: /blog
-permalink: /:categories/:title
+permalink: /:categories/:title:output_ext
 
 # Contact / handles.
 email: hello@kieranbamforth.me
