@@ -1,6 +1,7 @@
 # Global settings
 source: src
 destination: src/_site
+timezone: Europe/London
 
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
