@@ -8,6 +8,7 @@ src/_assets
 src/_includes
 src/_layouts
 src/_my_tags
+src/_site
 src/about.html
 src/feed.xml
 src/index.html
