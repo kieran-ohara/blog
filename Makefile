@@ -19,8 +19,8 @@ chalk-unlink:
 
 deploy:
 	bundle exec jekyll build --config ${CONFIG_FILES}
-	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
-	aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive
+	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
+	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
