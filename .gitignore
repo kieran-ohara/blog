@@ -1,4 +1,11 @@
+.jekyll-cache
 .sass-cache
+Gemfile
+Gemfile.lock
 infrastructure/infrastructure.json
+src/_assets
+src/_includes
+src/_layouts
+src/_my_tags
 vendor
 venv
