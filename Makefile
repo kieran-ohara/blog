@@ -18,7 +18,7 @@ chalk-unlink:
 	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file)))
 
 deploy:
-	bundle exec jekyll build
+	bundle exec jekyll build --config ${CONFIG_FILES}
 	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive
 
