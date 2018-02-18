@@ -2,11 +2,11 @@
 layout: post
 title:  "Farewell Boxen <3"
 date:   2017-02-10 18:29:52 +0000
-categories: automation developer-tools shell
+categories: tools
 ---
 ## Meet Boxen.
 
-Incase you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can setup your macOS machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] you provide&mdash;thus affording you all the advantages of [Infrastructure as Code][ioc wiki]:
+In case you&rsquo;re unacquainted, [Boxen][boxen upstream] is an open source project that can setup your macOS machine(s): it automatically installs apps, developer tools and just about [anything else you might need][boxen minecraft]. Unlike [third-party backup services][backblaze], Boxen does this by reading [manifest files][puppet manifest files] you provide&mdash;thus affording you all the advantages of [Infrastructure as Code][ioc wiki]:
 
 * You have full control over what gets installed, and *where*. This is unlike backup services I&rsquo;ve played with, which appear to just back up and restore *everything* on your hard drive.
 * Configuration files (such as your `.vimrc`) can be committed to source control. This allows you to experiment with different setups, `$ git checkout` if it goes all wrong, and ultimately `$ git commit` to new and *exciting* ways of working.
@@ -25,7 +25,7 @@ This workflow enabled me to transition between two unconnected machines seamless
 In my opinion, Boxen&rsquo;s greatest feature is that it provides a free [&ldquo;App-Store&rdquo;][boxen repo list] for developer tools. You&rsquo;ll find tools of which you are familiar, but you&rsquo;ll also find tools of which you are not. And it&rsquo;s here&mdash;in the latter category&mdash;where comes joy of using Boxen. A few of my favourite discoveries include:
 
 - [Tmux][tmux wiki]: how many terminal windows or tabs do you have open right now? If your answer is > 1, you could probably <s>change your life</s> benefit by trying out Tmux. Tmux is like a [tiling window manager][twm wiki], but for your terminal.
-- [Vim][vim wiki]: okay, you&rsquo;ve probably heard about Vim&hellip; However Boxen&rsquo;s standard installation includes Vim plus several useful plugins, which over time encouraged me to drop hefty IDEs, and switch to Vim.
+- [Vim][vim wiki]: okay, you&rsquo;ve probably heard about Vim&hellip; However Boxen&rsquo;s standard installation includes Vim plus several useful plugins, which encouraged me to drop hefty IDEs and switch to Vim.
 - [Hub][hub github]: Is GitHub part of your workflow? This CLI tool from GitHub enables you to raise pull requests&mdash;and more&mdash;right from the comfort of your command line.
 - [Flux][flux]: Research suggests we should avoid gadgets before bed, to [stop light interfering with our sleep patterns][cnn sleep]. As night approaches, Flux reduces the blue light emmitted from your screen to ease your eyes into sleeping.
 
@@ -37,11 +37,13 @@ In my opinion, Boxen&rsquo;s greatest feature is that it provides a free [&ldquo
 This sorcery is caused by GitHub&rsquo;s [custom build of NGINX][boxen nginx]: it clobbers `localhost:80` [by default][boxen nginx port 80], and all `*.dev` requests get resolved to it via [dnsmasq][boxen dnsmasq]. Basically, should you not be employed by GitHub, expect to reverse engineer Boxen from time to time.
 * Boxen &ldquo;gatekeeps&rdquo; the suite of open-source tools it provides; configuring them via [Puppet modules][boxen homebrew] instead of [the tools&rsquo; norms][homebrew bundle]. Your tools&rsquo; configuration therefore is useless outside of the realm of Boxen. Furthermore, your ability to use the open-source tools&rsquo; updates is limited by how fast the Puppet modules can implement them.
 * Updating your Mac with Boxen can take a *long* time, as Boxen uses [Puppet][puppet] under the hood. Every time you run `$ boxen`, Puppet has to [compile your manifests into a catalog][puppet catalog compilation], before it actually *applies* said catalog to your Mac. In other words, Puppet hangs for (*at least*) a minute, deciding what your &ldquo;perfect&rdquo; Mac should look like. Then&mdash;happy with it&rsquo;s vision&mdash;you&rsquo;ll have to wait some more, whilst Puppet goes about &ldquo;making it so&rdquo;.
-* [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat of a chore.
+* [Keeping][boxen upstream merge 1] [up][boxen upstream merge 2]-[to][boxen upstream merge 3]-[date][boxen upstream merge 4] [with][boxen upstream merge 5] [Boxen&rsquo;s][boxen upstream merge 6] [upstream][boxen upstream merge 7] [repository][boxen upstream merge 8] [is][boxen upstream merge 9] [hard][boxen upstream merge 10]: every now and again, you should pull the [upstream project][boxen upstream] into your [fork][boxen fork]&mdash;to keep your Mac up-to-date. However, my experience of this hasn&rsquo;t been so smooth; like with all the merge conflicts I&rsquo;ve had to resolve, or when package managers (like `$ pip` and `$ brew`) started to fail randomly. [Shared module][boxen shared modules] updates have also been known to break things&hellip; all of which makes pulling updates, somewhat a chore.
 
 ## Boxen is dead, long live Homebrew!
 
-The biggest nail in the coffin for Boxen came from [@MikeMcQuaid][mikemcquaid], then maintainer of the project. In a [GitHub issue][github drop boxen], he states that GitHub is no longer interested in maintaining Boxen, and furthermore he is a full time maintainer of the [Homebrew][homebrew] project. Homebrew can do all of the things people would reasonably expect form Boxen (check out [Brewfiles][brewfile usage] for keeping your dependencies under source control!), all without dependencies on Puppet.
+The biggest nail in the coffin for Boxen came from [@MikeMcQuaid][mikemcquaid]; then maintainer of the project. In a [GitHub issue][github drop boxen], Mike states GitHub is no longer interested in maintaining Boxen, and furthermore has moved on to maintain the [Homebrew][homebrew] project. Homebrew can do most things Boxen can (check out [Brewfiles][brewfile usage] for keeping your dependencies under source control!), with zero dependencies on Puppet.
+
+Although I invested lots of time into maintaining my [Boxen configuration][boxen fork], migrating to Homebrew was a natural, easy step thanks to [@MikeMcQuaid][mikemcquaid]&rsquo;s [Strap][strap] script. And in the rare cases Homebrew didn&rsquo;t provide me what I wanted, it&rsquo;s [infinitely easier to extend][custom brew repo] then Boxen.
 
 [backblaze]: https://www.backblaze.com/ "Backblaze backup software"
 
@@ -81,6 +83,9 @@ The biggest nail in the coffin for Boxen came from [@MikeMcQuaid][mikemcquaid], 
 [boxen upstream merge 10]:https://github.com/kieran-bamforth/our-boxen/commit/aa99351da2a47102a2a53f2d18d91299ab1e1cfb "2016-09-18: Merge upstream."
 
 [brewfile usage]: https://github.com/Homebrew/homebrew-bundle#usage
+
+[custom brew repo]: https://github.com/kieran-bamforth/homebrew-repo
+
 [cnn sleep]: https://edition.cnn.com/2016/10/31/health/kids-sleep-screens-tech/index.html
 
 [flux]: https://justgetflux.com/
@@ -94,13 +99,15 @@ The biggest nail in the coffin for Boxen came from [@MikeMcQuaid][mikemcquaid], 
 
 [ioc wiki]: https://en.wikipedia.org/wiki/Infrastructure_as_Code
 
-[mikemcqauid]: https://github.com/MikeMcQuaid
+[mikemcquaid]: https://github.com/MikeMcQuaid
 
 [puppet]: https://puppet.com/
 [puppet catalog compilation]: https://docs.puppet.com/puppet/4.9/subsystem_catalog_compilation.html
 [puppet manifest files]: https://docs.puppet.com/puppet/latest/lang_summary.html#files
 
 [remove nginx dnsmasq]: https://github.com/kieran-bamforth/our-boxen/commit/9b598e979db5adfc0fe1796b487f242f63c0f95d
+
+[strap]: https://github.com/MikeMcQuaid/strap
 
 [tmux wiki]: https://en.wikipedia.org/wiki/Tmux
 [twm wiki]: https://en.wikipedia.org/wiki/Tiling_window_manager
