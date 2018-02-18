@@ -2,15 +2,20 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
+CHALK_FILES=_assets _layouts _includes _my_tags 404.html about.html feed.xml index.html
 
-chalk:
-	ln -s ${CHALK_DIR}/Gemfile ./Gemfile
-	ln -s ${CHALK_DIR}/_assets ./src/_assets
-	ln -s ${CHALK_DIR}/_layouts ./src/_layouts
-	ln -s ${CHALK_DIR}/_includes ./src/_includes
-	ln -s ${CHALK_DIR}/_my_tags ./src/_my_tags
-	bundle install
-	cd ${CHALK_DIR} && yarn install --modules-folder ./_assets/yarn
+define chalk_link_template
+ln -s ${CHALK_DIR}/$(1) src/$(1);
+endef
+chalk-link:
+	$(foreach file, $(CHALK_FILES), $(call chalk_link_template,$(file)))
+	ln -s ${CHALK_DIR}/Gemfile ${CURDIR}/Gemfile
+
+define chalk_unlink_template
+test -e src/$(1) && rm src/$(1);
+endef
+chalk-unlink:
+	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file)))
 
 deploy:
 	bundle exec jekyll build

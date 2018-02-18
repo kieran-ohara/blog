@@ -3,9 +3,13 @@
 Gemfile
 Gemfile.lock
 infrastructure/infrastructure.json
+src/404.html
 src/_assets
 src/_includes
 src/_layouts
 src/_my_tags
+src/about.html
+src/feed.xml
+src/index.html
 vendor
 venv
