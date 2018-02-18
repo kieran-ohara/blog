@@ -56,7 +56,7 @@ Although I invested lots of time into maintaining my [Boxen configuration][boxen
 [boxen homebrew]: https://github.com/boxen/puppet-homebrew
 
 [boxen nginx]: https://github.com/boxen/puppet-nginx
-[boxen nginx octocat]: /images/boxen-nginx-octocat.png
+[boxen nginx octocat]: {{ "/assets/boxen-nginx-octocat.png"  | absolute_url }}
 [boxen nginx port 80]: https://github.com/boxen/puppet-nginx/blob/master/manifests/init.pp#L5
 
 [boxen minecraft]: https://github.com/boxen/puppet-minecraft
