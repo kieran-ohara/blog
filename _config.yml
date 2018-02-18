@@ -1,22 +1,21 @@
-# Global settings
+# Global settings.
 source: src
 destination: src/_site
 timezone: Europe/London
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Site settings.
 title: kieranbamforth.me
-email: hello@kieranbamforth.me
-description: $ cat braindump
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+description: A braindump, mostly.
 url: http://www.kieranbamforth.me
+baseurl: /blog
+permalink: /:categories/:title
+
+# Contact / handles.
+email: hello@kieranbamforth.me
 twitter_username: kieran_bamforth
 github_username:  kieran-bamforth
 
-# Build settings
+# Build settings.
 markdown: kramdown
 theme: minima
 gems:
