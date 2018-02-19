@@ -49,18 +49,19 @@ for index, bucketName in enumerate(bucketNames):
 
         template.add_resource(bucketPolicy)
 
-    aliasTarget = r53.AliasTarget()
-    aliasTarget.HostedZoneId = 'Z1BKCTXD74EZPE'
-    aliasTarget.DNSName = 's3-website-eu-west-1.amazonaws.com'
+    if index == 0:
+        aliasTarget = r53.AliasTarget()
+        aliasTarget.HostedZoneId = 'Z1BKCTXD74EZPE'
+        aliasTarget.DNSName = 's3-website-eu-west-1.amazonaws.com'
 
-    recordSetResourceName = 'recordSet{}'.format(index)
-    recordSet = r53.RecordSetType(recordSetResourceName)
-    recordSet.AliasTarget = aliasTarget
-    recordSet.HostedZoneId = hostedZoneId
-    recordSet.Name = bucketName + '.'
-    recordSet.Type = 'A'
+        recordSetResourceName = 'recordSetApex'
+        recordSet = r53.RecordSetType(recordSetResourceName)
+        recordSet.AliasTarget = aliasTarget
+        recordSet.HostedZoneId = hostedZoneId
+        recordSet.Name = bucketName + '.'
+        recordSet.Type = 'A'
 
-    template.add_resource(recordSet)
+        template.add_resource(recordSet)
 
 cloudfront_dist = template.add_resource(Distribution(
     'cloudfrontDistribution',
@@ -80,5 +81,15 @@ cloudfront_dist = template.add_resource(Distribution(
         HttpVersion='http2'
     )
 ))
+
+cloudfront_record_set = template.add_resource(r53.RecordSetType(
+        'recordSetWww',
+        AliasTarget=r53.AliasTarget(
+            HostedZoneId='Z2FDTNDATAQYW2',
+            DNSName=GetAtt(cloudfront_dist, 'DomainName')),
+        HostedZoneId=hostedZoneId,
+        Name='www.kieranbamforth.me',
+        Type='A'
+        ))
 
 print(template.to_json())
