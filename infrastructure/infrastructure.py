@@ -1,6 +1,13 @@
 from troposphere import Template, GetAtt, Ref
+from troposphere.cloudfront import Distribution, DistributionConfig
+from troposphere.cloudfront import ForwardedValues
+from troposphere.cloudfront import Origin, DefaultCacheBehavior
+from troposphere.cloudfront import S3Origin
+
 import troposphere.s3 as s3
 import troposphere.route53 as r53
+
+import pdb
 
 template = Template()
 
@@ -54,5 +61,21 @@ for index, bucketName in enumerate(bucketNames):
     recordSet.Type = 'A'
 
     template.add_resource(recordSet)
+
+cloudfront_dist = template.add_resource(Distribution(
+    'cloudfrontDistribution',
+    DistributionConfig=DistributionConfig(
+        Origins=[Origin(
+            Id='S3Origin',
+            DomainName=GetAtt(template.resources['bucket1'], 'DomainName'),
+            S3OriginConfig=S3Origin())],
+        DefaultCacheBehavior=DefaultCacheBehavior(
+            TargetOriginId='S3Origin',
+            ForwardedValues=ForwardedValues(QueryString=False),
+            ViewerProtocolPolicy='allow-all'),
+        Enabled=True,
+        HttpVersion='http2'
+    )
+))
 
 print(template.to_json())
