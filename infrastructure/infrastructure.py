@@ -69,7 +69,7 @@ cloudfront_dist = template.add_resource(Distribution(
     DistributionConfig=DistributionConfig(
         Aliases=[
             'www.kieranbamforth.me'
-        ],
+            ],
         Origins=[Origin(
             Id='S3Origin',
             DomainName=GetAtt(template.resources['bucket1'], 'DomainName'),
@@ -80,17 +80,17 @@ cloudfront_dist = template.add_resource(Distribution(
             ViewerProtocolPolicy='allow-all'),
         Enabled=True,
         HttpVersion='http2'
-    )
-))
+        )
+    ))
 
 cloudfront_record_set = template.add_resource(r53.RecordSetType(
-        'recordSetWww',
-        AliasTarget=r53.AliasTarget(
-            HostedZoneId='Z2FDTNDATAQYW2',
-            DNSName=GetAtt(cloudfront_dist, 'DomainName')),
-        HostedZoneId=hostedZoneId,
-        Name='www.kieranbamforth.me',
-        Type='A'
-        ))
+    'recordSetWww',
+    AliasTarget=r53.AliasTarget(
+        HostedZoneId='Z2FDTNDATAQYW2',
+        DNSName=GetAtt(cloudfront_dist, 'DomainName')),
+    HostedZoneId=hostedZoneId,
+    Name='www.kieranbamforth.me.',
+    Type='A'
+    ))
 
 print(template.to_json())
