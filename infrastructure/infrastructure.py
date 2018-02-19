@@ -65,6 +65,9 @@ for index, bucketName in enumerate(bucketNames):
 cloudfront_dist = template.add_resource(Distribution(
     'cloudfrontDistribution',
     DistributionConfig=DistributionConfig(
+        Aliases=[
+            'www.kieranbamforth.me'
+        ],
         Origins=[Origin(
             Id='S3Origin',
             DomainName=GetAtt(template.resources['bucket1'], 'DomainName'),
