@@ -18,7 +18,8 @@ for index, bucketName in enumerate(bucketNames):
     bucketWebsiteConfiguration = s3.WebsiteConfiguration()
     if index == 0:
         redirect = s3.RedirectAllRequestsTo()
-        redirect.HostName = Ref('bucket1')
+        redirect.HostName = 'www.kieranbamforth.me'
+        redirect.Protocol = 'http'
         bucketWebsiteConfiguration.RedirectAllRequestsTo = redirect
     elif index == 1:
         bucketWebsiteConfiguration.IndexDocument = 'index.html'
