@@ -3,6 +3,8 @@ from troposphere.cloudfront import Distribution, DistributionConfig
 from troposphere.cloudfront import ForwardedValues
 from troposphere.cloudfront import Origin, DefaultCacheBehavior
 from troposphere.cloudfront import S3Origin
+from troposphere.cloudfront import ViewerCertificate
+from troposphere.cloudfront import DefaultCacheBehavior, ForwardedValues
 
 import troposphere.s3 as s3
 import troposphere.route53 as r53
@@ -39,7 +41,7 @@ redirect_bucket = template.add_resource(s3.Bucket(
     WebsiteConfiguration=s3.WebsiteConfiguration(
         RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
             HostName='www.kieranbamforth.me',
-            Protocol='http'
+            Protocol='https'
             )
         )
     ))
@@ -64,10 +66,15 @@ cloudfront_dist = template.add_resource(Distribution(
             S3OriginConfig=S3Origin())],
         DefaultCacheBehavior=DefaultCacheBehavior(
             TargetOriginId='S3Origin',
+            ViewerProtocolPolicy='redirect-to-https',
             ForwardedValues=ForwardedValues(QueryString=False),
-            ViewerProtocolPolicy='allow-all'),
+            ),
         Enabled=True,
-        HttpVersion='http2'
+        HttpVersion='http2',
+        ViewerCertificate=ViewerCertificate(
+            AcmCertificateArn='arn:aws:acm:eu-west-1:855277617897:certificate/b9acae26-548b-45f6-90cf-316dfed86f5e',
+            SslSupportMethod='sni-only'
+            )
         )
     ))
 
