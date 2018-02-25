@@ -3,7 +3,7 @@ STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
 CHALK_FILES=_assets _layouts _my_tags 404.html about.html feed.xml index.html
-CHALK_INCLUDES=_includes/image.html _includes/javascripts.html _includes/svg-icon.html
+CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
 
 define chalk_link_template
 ln -s ${CHALK_DIR}/$(1) $(2)/$(1);
