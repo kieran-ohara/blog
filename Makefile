@@ -19,6 +19,9 @@ chalk-unlink:
 	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file),src))
 	$(foreach file, $(CHALK_INCLUDES), $(call chalk_unlink_template,$(file),src))
 
+compress:
+	find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js' | xargs gzip -9
+
 deploy:
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
