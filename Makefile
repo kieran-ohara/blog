@@ -19,8 +19,11 @@ chalk-unlink:
 	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file),src))
 	$(foreach file, $(CHALK_INCLUDES), $(call chalk_unlink_template,$(file),src))
 
+define compress_file
+gzip -9 -c $(1) > $(basename $1)$(suffix $1)
+endef
 compress:
-	find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js' | xargs gzip -9
+	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js'), $(call compress_file,$(file)))
 
 deploy:
 	bundle exec jekyll build --config ${CONFIG_FILES}
