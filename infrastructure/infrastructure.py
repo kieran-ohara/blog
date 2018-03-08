@@ -1,5 +1,5 @@
 from troposphere import Template, GetAtt, Ref
-from troposphere.cloudfront import Distribution, DistributionConfig
+from troposphere.cloudfront import Distribution, DistributionConfig, Logging
 from troposphere.cloudfront import ForwardedValues
 from troposphere.cloudfront import Origin, DefaultCacheBehavior
 from troposphere.cloudfront import S3Origin
@@ -56,6 +56,10 @@ redirect_record_set = template.add_resource(r53.RecordSetType(
     Type='A'
     ))
 
+cloudfront_logs_bucket = template.add_resource(s3.Bucket(
+    'bucketLogs'
+    ))
+
 cloudfront_dist = template.add_resource(Distribution(
     'cloudfrontDistribution',
     DistributionConfig=DistributionConfig(
@@ -74,6 +78,9 @@ cloudfront_dist = template.add_resource(Distribution(
         ViewerCertificate=ViewerCertificate(
             AcmCertificateArn='arn:aws:acm:us-east-1:855277617897:certificate/8b0604e4-b83b-419c-bc64-d06849c6b5ce',
             SslSupportMethod='sni-only'
+            ),
+        Logging=Logging(
+            Bucket=GetAtt(cloudfront_logs_bucket, 'DomainName'),
             )
         )
     ))
