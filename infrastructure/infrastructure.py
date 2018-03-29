@@ -35,9 +35,20 @@ content_bucket_poilcy = template.add_resource(s3.BucketPolicy(
         }
     ))
 
-redirect_bucket = template.add_resource(s3.Bucket(
-    'bucket0',
-    BucketName='kieranbamforth.me',
+redirect_bucket_irkb = template.add_resource(s3.Bucket(
+    'bucket2',
+    BucketName='irkb.me',
+    WebsiteConfiguration=s3.WebsiteConfiguration(
+        RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
+            HostName='www.kieranbamforth.me',
+            Protocol='https'
+            )
+        )
+    ))
+
+redirect_bucket_irkb_www = template.add_resource(s3.Bucket(
+    'bucket3',
+    BucketName='www.irkb.me',
     WebsiteConfiguration=s3.WebsiteConfiguration(
         RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
             HostName='www.kieranbamforth.me',
