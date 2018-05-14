@@ -39,9 +39,9 @@ serve:
 
 infrastructure:
 	venv/bin/python infrastructure/infrastructure.py > ${INFRASTRUCTURE_JSON}
-	venv/bin/aws cloudformation ${MODE}-stack \
+	venv/bin/aws cloudformation deploy \
 		--stack-name ${STACK_NAME} \
-		--template-body file://${INFRASTRUCTURE_JSON}
+		--template-file ${INFRASTRUCTURE_JSON}
 
 destroy-infrastructure:
 	venv/bin/aws cloudformation delete-stack \
