@@ -1,179 +1,181 @@
 <nav class="header-nav {% if site.scrollappear_enabled %}scrollappear{% endif %}">
-  <a href="{{ '/index.html' | relative_url }}" class="header-logo" title="{{ site.name }}">{{ site.name }}</a>
-  <ul class="header-links">
-    {% if site.about_enabled == true %}
-      <li>
-        <a href="{{ 'about' | relative_url }}" title="About me">
-          {% include svg-icon.html icon="about" %}
-        </a>
-      </li>
-    {% endif %}
-	{% if site.social.twitter %}
-	<li>
-		<a href="https://twitter.com/{{ site.social.twitter }}" rel="noreferrer noopener" target="_blank" title="Twitter">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<path d="M16 3.038c-0.59 0.26-1.22 0.437-1.885 0.517 0.677-0.407 1.198-1.050 1.443-1.816-0.634 0.37-1.337 0.64-2.085 0.79-0.598-0.64-1.45-1.040-2.396-1.040-1.812 0-3.282 1.47-3.282 3.28 0 0.26 0.030 0.51 0.085 0.75-2.728-0.13-5.147-1.44-6.766-3.42-0.284 0.481-0.444 1.041-0.444 1.651 0 1.14 0.58 2.143 1.46 2.732-0.538-0.017-1.045-0.165-1.487-0.41v0.040c0 1.59 1.13 2.918 2.633 3.22-0.276 0.074-0.566 0.114-0.865 0.114-0.21 0-0.41-0.020-0.61-0.058 0.42 1.304 1.63 2.253 3.070 2.28-1.12 0.88-2.54 1.404-4.070 1.404-0.26 0-0.52-0.015-0.78-0.045 1.46 0.93 3.18 1.474 5.040 1.474 6.040 0 9.34-5 9.34-9.33 0-0.14 0-0.28-0.010-0.42 0.64-0.46 1.2-1.040 1.64-1.7z"></path>
-			</svg>
-		</a>
-	</li>
-    {% endif %}
-    {% if site.social.facebook %}
-      <li>
-        <a href="https://www.facebook.com/{{ site.social.facebook }}" rel="noreferrer noopener" target="_blank" title="Facebook">
-          {% include svg-icon.html icon="facebook" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.medium %}
-      <li>
-        <a href="https://medium.com/{{ site.social.medium }}" rel="noreferrer noopener" target="_blank" title="Medium">
-          {% include svg-icon.html icon="medium" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.github %}
-	<li>
-		<a href="https://github.com/{{ site.social.github }}" rel="noreferrer noopener" target="_blank" title="GitHub">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<path d="M8 0c-4.42 0-8 3.582-8 8 0 3.535 2.292 6.533 5.47 7.59 0.4 0.075 0.547-0.172 0.547-0.385 0-0.19-0.007-0.693-0.010-1.36-2.226 0.483-2.695-1.073-2.695-1.073-0.364-0.924-0.89-1.17-0.89-1.17-0.725-0.496 0.056-0.486 0.056-0.486 0.803 0.056 1.225 0.824 1.225 0.824 0.714 1.223 1.873 0.87 2.33 0.665 0.072-0.517 0.278-0.87 0.507-1.070-1.777-0.2-3.644-0.888-3.644-3.953 0-0.873 0.31-1.587 0.823-2.147-0.090-0.202-0.36-1.015 0.070-2.117 0 0 0.67-0.215 2.2 0.82 0.64-0.178 1.32-0.266 2-0.27 0.68 0.004 1.36 0.092 2 0.27 1.52-1.035 2.19-0.82 2.19-0.82 0.43 1.102 0.16 1.915 0.080 2.117 0.51 0.56 0.82 1.274 0.82 2.147 0 3.073-1.87 3.75-3.65 3.947 0.28 0.24 0.54 0.73 0.54 1.48 0 1.070-0.010 1.93-0.010 2.19 0 0.21 0.14 0.46 0.55 0.38 3.201-1.049 5.491-4.049 5.491-7.579 0-4.418-3.582-8-8-8z"></path>
-			</svg>
-		</a>
-	</li>
-    {% endif %}
-    {% if site.social.gitlab %}
-      <li>
-        <a href="https://gitlab.com/{{ site.social.gitlab }}" rel="noreferrer noopener" target="_blank" title="GitLab">
-          {% include svg-icon.html icon="gitlab" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.bitbucket %}
-      <li>
-        <a href="https://bitbucket.org/{{ site.social.bitbucket }}" rel="noreferrer noopener" target="_blank" title="Bitbucket">
-          {% include svg-icon.html icon="bitbucket" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.stackoverflow %}
-      <li>
-        <a href="https://stackoverflow.com/users/{{ site.social.stackoverflow }}" rel="noreferrer noopener" target="_blank" title="Stack Overflow">
-          {% include svg-icon.html icon="stackoverflow" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.keybase %}
-      <li>
-        <a href="https://keybase.io/{{ site.social.keybase }}" rel="noreferrer noopener" target="_blank" title="Keybase">
-          {% include svg-icon.html icon="keybase" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.docker %}
-      <li>
-        <a href="https://hub.docker.com/r/{{ site.social.docker }}" rel="noreferrer noopener" target="_blank" title="Docker Hub">
-          {% include svg-icon.html icon="docker" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.linkedin %}
-      <li>
-        <a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" rel="noreferrer noopener" target="_blank" title="LinkedIn">
-          {% include svg-icon.html icon="linkedin" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.dribbble %}
-      <li>
-        <a href="https://dribbble.com/{{ site.social.dribbble }}" rel="noreferrer noopener" target="_blank" title="Dribbble">
-          {% include svg-icon.html icon="dribbble" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.flickr %}
-      <li>
-        <a href="https://www.flickr.com/photos/{{ site.social.flickr }}" rel="noreferrer noopener" target="_blank" title="Flickr">
-          {% include svg-icon.html icon="flickr" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.instagram %}
-      <li>
-        <a href="https://instagram.com/{{ site.social.instagram }}" rel="noreferrer noopener" target="_blank" title="Instagram">
-          {% include svg-icon.html icon="instagram" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.tumblr %}
-      <li>
-        <a href="https://{{ site.social.tumblr }}.tumblr.com" rel="noreferrer noopener" target="_blank" title="Tumblr">
-          {% include svg-icon.html icon="tumblr" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.spotify %}
-      <li>
-        <a href="https://play.spotify.com/user/{{ site.social.spotify }}" rel="noreferrer noopener" target="_blank" title="Spotify">
-          {% include svg-icon.html icon="spotify" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.youtube %}
-      <li>
-        <a href="https://www.youtube.com/user/{{ site.social.youtube }}" rel="noreferrer noopener" target="_blank" title="Youtube">
-          {% include svg-icon.html icon="youtube" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.twitch %}
-      <li>
-        <a href="https://www.twitch.tv/{{ site.social.twitch }}" rel="noreferrer noopener" target="_blank" title="Twitch">
-          {% include svg-icon.html icon="twitch" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.steam %}
-      <li>
-        <a href="https://steamcommunity.com/id/{{ site.social.steam }}" rel="noreferrer noopener" target="_blank" title="Steam">
-          {% include svg-icon.html icon="steam" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.discord %}
-      <li>
-        <a href="https://discord.gg/{{ site.social.discord }}" rel="noreferrer noopener" target="_blank" title="Discord Server">
-          {% include svg-icon.html icon="discord" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.bitcoin %}
-      <li>
-        <a href="https://blockexplorer.com/address/{{ site.social.bitcoin }}" rel="noreferrer noopener" target="_blank" title="Bitcoin">
-          {% include svg-icon.html icon="bitcoin" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.ethereum %}
-      <li>
-        <a href="https://etherscan.io/address/{{ site.social.ethereum }}" rel="noreferrer noopener" target="_blank" title="Ethereum">
-          {% include svg-icon.html icon="ethereum" %}
-        </a>
-      </li>
-    {% endif %}
-    {% if site.social.email %}
-	<li>
-		<a href="mailto:{{ site.social.email }}" title="Email">
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-				<path id="icon-email" d="M14.5 2h-13c-0.829 0-1.5 0.671-1.5 1.5v9c0 0.828 0.671 1.5 1.5 1.5h13c0.829 0 1.5-0.672 1.5-1.5v-9c0-0.829-0.671-1.5-1.5-1.5zM1.371 12.995l-0.365-0.366 4.125-4.124 0.365 0.366-4.125 4.124zM14.63 12.995l-4.125-4.124 0.366-0.366 4.125 4.124-0.366 0.366zM8.5 9.662v0.338h-1v-0.338l-6.498-6.025 0.636-0.636 6.362 5.899 6.363-5.899 0.636 0.636-6.498 6.025z"></path>
-			</svg>
-		</a>
-	</li>
-    {% endif %}
-    {% if site.rss_enabled == true %}
-      <li>
-        <a href="{{ 'feed.xml' | relative_url }}" rel="noreferrer noopener" target="_blank" title="RSS">
-          {% include svg-icon.html icon="rss" %}
-        </a>
-      </li>
-    {% endif %}
-  </ul>
+    <a href="{{ '/index.html' | relative_url }}" class="header-logo" title="{{ site.name }}">{{ site.name }}</a>
+    <ul class="header-links">
+        {% if site.about_enabled == true %}
+            <li>
+                <a href="{{ 'about' | relative_url }}" title="About me">
+                    {% include svg-icon.html icon="about" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.twitter %}
+            <li>
+                <a href="https://twitter.com/{{ site.social.twitter }}" rel="noreferrer noopener" target="_blank" title="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M16 3.038c-0.59 0.26-1.22 0.437-1.885 0.517 0.677-0.407 1.198-1.050 1.443-1.816-0.634 0.37-1.337 0.64-2.085 0.79-0.598-0.64-1.45-1.040-2.396-1.040-1.812 0-3.282 1.47-3.282 3.28 0 0.26 0.030 0.51 0.085 0.75-2.728-0.13-5.147-1.44-6.766-3.42-0.284 0.481-0.444 1.041-0.444 1.651 0 1.14 0.58 2.143 1.46 2.732-0.538-0.017-1.045-0.165-1.487-0.41v0.040c0 1.59 1.13 2.918 2.633 3.22-0.276 0.074-0.566 0.114-0.865 0.114-0.21 0-0.41-0.020-0.61-0.058 0.42 1.304 1.63 2.253 3.070 2.28-1.12 0.88-2.54 1.404-4.070 1.404-0.26 0-0.52-0.015-0.78-0.045 1.46 0.93 3.18 1.474 5.040 1.474 6.040 0 9.34-5 9.34-9.33 0-0.14 0-0.28-0.010-0.42 0.64-0.46 1.2-1.040 1.64-1.7z"></path>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.facebook %}
+            <li>
+                <a href="https://www.facebook.com/{{ site.social.facebook }}" rel="noreferrer noopener" target="_blank" title="Facebook">
+                    {% include svg-icon.html icon="facebook" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.medium %}
+            <li>
+                <a href="https://medium.com/{{ site.social.medium }}" rel="noreferrer noopener" target="_blank" title="Medium">
+                    {% include svg-icon.html icon="medium" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.github %}
+            <li>
+                <a href="https://github.com/{{ site.social.github }}" rel="noreferrer noopener" target="_blank" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M8 0c-4.42 0-8 3.582-8 8 0 3.535 2.292 6.533 5.47 7.59 0.4 0.075 0.547-0.172 0.547-0.385 0-0.19-0.007-0.693-0.010-1.36-2.226 0.483-2.695-1.073-2.695-1.073-0.364-0.924-0.89-1.17-0.89-1.17-0.725-0.496 0.056-0.486 0.056-0.486 0.803 0.056 1.225 0.824 1.225 0.824 0.714 1.223 1.873 0.87 2.33 0.665 0.072-0.517 0.278-0.87 0.507-1.070-1.777-0.2-3.644-0.888-3.644-3.953 0-0.873 0.31-1.587 0.823-2.147-0.090-0.202-0.36-1.015 0.070-2.117 0 0 0.67-0.215 2.2 0.82 0.64-0.178 1.32-0.266 2-0.27 0.68 0.004 1.36 0.092 2 0.27 1.52-1.035 2.19-0.82 2.19-0.82 0.43 1.102 0.16 1.915 0.080 2.117 0.51 0.56 0.82 1.274 0.82 2.147 0 3.073-1.87 3.75-3.65 3.947 0.28 0.24 0.54 0.73 0.54 1.48 0 1.070-0.010 1.93-0.010 2.19 0 0.21 0.14 0.46 0.55 0.38 3.201-1.049 5.491-4.049 5.491-7.579 0-4.418-3.582-8-8-8z"></path>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.gitlab %}
+            <li>
+                <a href="https://gitlab.com/{{ site.social.gitlab }}" rel="noreferrer noopener" target="_blank" title="GitLab">
+                    {% include svg-icon.html icon="gitlab" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.bitbucket %}
+            <li>
+                <a href="https://bitbucket.org/{{ site.social.bitbucket }}" rel="noreferrer noopener" target="_blank" title="Bitbucket">
+                    {% include svg-icon.html icon="bitbucket" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.stackoverflow %}
+            <li>
+                <a href="https://stackoverflow.com/users/{{ site.social.stackoverflow }}" rel="noreferrer noopener" target="_blank" title="Stack Overflow">
+                    {% include svg-icon.html icon="stackoverflow" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.keybase %}
+            <li>
+                <a href="https://keybase.io/{{ site.social.keybase }}" rel="noreferrer noopener" target="_blank" title="Keybase">
+                    {% include svg-icon.html icon="keybase" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.docker %}
+            <li>
+                <a href="https://hub.docker.com/r/{{ site.social.docker }}" rel="noreferrer noopener" target="_blank" title="Docker Hub">
+                    {% include svg-icon.html icon="docker" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.linkedin %}
+            <li>
+                <a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" rel="noreferrer noopener" target="_blank" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M13.632 13.635h-2.37v-3.713c0-0.886-0.018-2.025-1.234-2.025-1.235 0-1.424 0.964-1.424 1.96v3.778h-2.37v-7.635h2.276v1.040h0.030c0.318-0.6 1.092-1.233 2.247-1.233 2.4 0 2.845 1.58 2.845 3.637v4.188zM3.558 4.955c-0.762 0-1.376-0.617-1.376-1.377 0-0.758 0.614-1.375 1.376-1.375 0.76 0 1.376 0.617 1.376 1.375 0 0.76-0.617 1.377-1.376 1.377zM4.746 13.635h-2.376v-7.635h2.376v7.635zM14.816 0h-13.636c-0.652 0-1.18 0.516-1.18 1.153v13.694c0 0.637 0.528 1.153 1.18 1.153h13.635c0.652 0 1.185-0.516 1.185-1.153v-13.694c0-0.637-0.533-1.153-1.185-1.153z"></path>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.dribbble %}
+            <li>
+                <a href="https://dribbble.com/{{ site.social.dribbble }}" rel="noreferrer noopener" target="_blank" title="Dribbble">
+                    {% include svg-icon.html icon="dribbble" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.flickr %}
+            <li>
+                <a href="https://www.flickr.com/photos/{{ site.social.flickr }}" rel="noreferrer noopener" target="_blank" title="Flickr">
+                    {% include svg-icon.html icon="flickr" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.instagram %}
+            <li>
+                <a href="https://instagram.com/{{ site.social.instagram }}" rel="noreferrer noopener" target="_blank" title="Instagram">
+                    {% include svg-icon.html icon="instagram" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.tumblr %}
+            <li>
+                <a href="https://{{ site.social.tumblr }}.tumblr.com" rel="noreferrer noopener" target="_blank" title="Tumblr">
+                    {% include svg-icon.html icon="tumblr" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.spotify %}
+            <li>
+                <a href="https://play.spotify.com/user/{{ site.social.spotify }}" rel="noreferrer noopener" target="_blank" title="Spotify">
+                    {% include svg-icon.html icon="spotify" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.youtube %}
+            <li>
+                <a href="https://www.youtube.com/user/{{ site.social.youtube }}" rel="noreferrer noopener" target="_blank" title="Youtube">
+                    {% include svg-icon.html icon="youtube" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.twitch %}
+            <li>
+                <a href="https://www.twitch.tv/{{ site.social.twitch }}" rel="noreferrer noopener" target="_blank" title="Twitch">
+                    {% include svg-icon.html icon="twitch" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.steam %}
+            <li>
+                <a href="https://steamcommunity.com/id/{{ site.social.steam }}" rel="noreferrer noopener" target="_blank" title="Steam">
+                    {% include svg-icon.html icon="steam" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.discord %}
+            <li>
+                <a href="https://discord.gg/{{ site.social.discord }}" rel="noreferrer noopener" target="_blank" title="Discord Server">
+                    {% include svg-icon.html icon="discord" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.bitcoin %}
+            <li>
+                <a href="https://blockexplorer.com/address/{{ site.social.bitcoin }}" rel="noreferrer noopener" target="_blank" title="Bitcoin">
+                    {% include svg-icon.html icon="bitcoin" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.ethereum %}
+            <li>
+                <a href="https://etherscan.io/address/{{ site.social.ethereum }}" rel="noreferrer noopener" target="_blank" title="Ethereum">
+                    {% include svg-icon.html icon="ethereum" %}
+                </a>
+            </li>
+        {% endif %}
+        {% if site.social.email %}
+            <li>
+                <a href="mailto:{{ site.social.email }}" title="Email">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id="icon-email" d="M14.5 2h-13c-0.829 0-1.5 0.671-1.5 1.5v9c0 0.828 0.671 1.5 1.5 1.5h13c0.829 0 1.5-0.672 1.5-1.5v-9c0-0.829-0.671-1.5-1.5-1.5zM1.371 12.995l-0.365-0.366 4.125-4.124 0.365 0.366-4.125 4.124zM14.63 12.995l-4.125-4.124 0.366-0.366 4.125 4.124-0.366 0.366zM8.5 9.662v0.338h-1v-0.338l-6.498-6.025 0.636-0.636 6.362 5.899 6.363-5.899 0.636 0.636-6.498 6.025z"></path>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+        {% if site.rss_enabled == true %}
+            <li>
+                <a href="{{ 'feed.xml' | relative_url }}" rel="noreferrer noopener" target="_blank" title="RSS">
+                    {% include svg-icon.html icon="rss" %}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
 </nav>
