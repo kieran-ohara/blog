@@ -34,11 +34,34 @@ compress:
 deploy: compress
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
-	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive --exclude "*.html"
-	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive \
+	# HTML
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.html" \
-		--content-type "text/html;charset=UTF-8"
+		--content-type "text/html;charset=UTF-8" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# JS
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.js" \
+		--content-type "text/javascript" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# CSS
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.css" \
+		--content-type "text/css" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# XML
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.xml" \
+		--content-type "text/xml" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
