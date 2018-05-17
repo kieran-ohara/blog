@@ -2,8 +2,12 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
-CHALK_FILES=_assets _layouts _my_tags 404.html about.html feed.xml index.html
+CHALK_FILES=_assets _layouts _my_tags about.html feed.xml index.html
 CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
+CHALK_GITHUB=https://github.com/nielsenramon/chalk
+
+chalk:
+	test -d $(CHALK_DIR) || mkdir vendor && git clone $(CHALK_GITHUB) $(CHALK_DIR)
 
 define chalk_link_template
 ln -s ${CHALK_DIR}/$(1) $(2)/$(1);
@@ -46,5 +50,11 @@ infrastructure:
 destroy-infrastructure:
 	venv/bin/aws cloudformation delete-stack \
 		--stack-name ${STACK_NAME}
+
+setup:
+	test -e ./Gemfile || ln -s $(CHALK_DIR)/Gemfile ./Gemfile
+	bundle install
+	test -e ./package.json || ln -s $(CHALK_DIR)/package.json ./package.json
+	yarn install --modules-folder ./src/_assets/yarn
 
 .PHONY: infrastructure
