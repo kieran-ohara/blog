@@ -2,6 +2,7 @@
 .sass-cache
 Gemfile
 Gemfile.lock
+dist
 infrastructure/infrastructure.json
 src/_assets
 src/_includes/image.html

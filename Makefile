@@ -5,6 +5,7 @@ CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
 CHALK_FILES=_assets _layouts _my_tags about.html feed.xml index.html
 CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
 CHALK_GITHUB=https://github.com/nielsenramon/chalk
+DIST=dist
 
 chalk:
 	test -d $(CHALK_DIR) || mkdir vendor && git clone $(CHALK_GITHUB) $(CHALK_DIR)
@@ -24,12 +25,13 @@ chalk-unlink:
 	$(foreach file, $(CHALK_INCLUDES), $(call chalk_unlink_template,$(file),src))
 
 define compress_file
-gzip -9 -c $(1) > $(basename $1)$(suffix $1)
+mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
+gzip -c $(1) > $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
 compress:
-	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js'), $(call compress_file,$(file)))
+	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js' -or -name '*.xml'), $(call compress_file,$(file)))
 
-deploy:
+deploy: compress
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	venv/bin/aws s3 cp src/_site s3://www.kieranbamforth.me/blog --recursive --exclude "*.html"
