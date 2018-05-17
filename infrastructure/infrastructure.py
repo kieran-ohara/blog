@@ -126,7 +126,7 @@ cloudfront_dist = template.add_resource(Distribution(
             Bucket=GetAtt(cloudfront_logs_bucket, 'DomainName'),
         ),
         CustomErrorResponses=[CustomErrorResponse(
-            ErrorCode='404',
+            ErrorCode='403',
             ResponseCode='404',
             ResponsePagePath='/blog/404.html'
         )]
