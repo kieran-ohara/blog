@@ -5,6 +5,7 @@ from troposphere.cloudfront import Origin, DefaultCacheBehavior
 from troposphere.cloudfront import S3Origin
 from troposphere.cloudfront import ViewerCertificate
 from troposphere.cloudfront import DefaultCacheBehavior, ForwardedValues
+from troposphere.cloudfront import CustomErrorResponse
 
 import troposphere.s3 as s3
 import troposphere.route53 as r53
@@ -123,7 +124,12 @@ cloudfront_dist = template.add_resource(Distribution(
             ),
         Logging=Logging(
             Bucket=GetAtt(cloudfront_logs_bucket, 'DomainName'),
-            )
+        ),
+        CustomErrorResponses=[CustomErrorResponse(
+            ErrorCode='404',
+            ResponseCode='404',
+            ResponsePagePath='/blog/404.html'
+        )]
         )
     ))
 
