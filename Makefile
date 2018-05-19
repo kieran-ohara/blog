@@ -29,9 +29,21 @@ mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
 gzip -c $(1) > $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
 compress:
-	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' -or -name '*.js' -or -name '*.xml'), $(call compress_file,$(file)))
+	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' \
+		-or -name '*.js' \
+		-or -name '*.xml' \
+		-or -name '*.eot' \
+		-or -name '*.ttf' \
+		-or -name '*.svg'), $(call compress_file,$(file)))
 
-deploy: compress
+define cp_file
+mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
+cp $(1) $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
+endef
+standard:
+	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2'), $(call cp_file,$(file)))
+
+deploy: compress standard
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	# HTML
@@ -60,6 +72,39 @@ deploy: compress
 		--exclude "*" \
 		--include "*.xml" \
 		--content-type "text/xml" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# EOT
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.eot" \
+		--content-type "application/vnd.ms-fontobject" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# TTF
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.ttf" \
+		--content-type "application/octet-stream" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# WOFF
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.woff" \
+		--content-type "font/woff" \
+		--cache-control "Cache-Control: max-age=3600"
+	# WOFF2
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.woff2" \
+		--content-type "font/woff2" \
+		--cache-control "Cache-Control: max-age=3600"
+	# SVG
+	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.svg" \
+		--content-type "image/svg+xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 
