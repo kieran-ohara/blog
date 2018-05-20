@@ -41,7 +41,7 @@ mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
 cp $(1) $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
 standard:
-	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2'), $(call cp_file,$(file)))
+	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2' -or -name 'robots.txt'), $(call cp_file,$(file)))
 
 deploy: compress standard
 	bundle exec jekyll build --config ${CONFIG_FILES}
@@ -107,6 +107,8 @@ deploy: compress standard
 		--content-type "image/svg+xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
+	# Robots.txt
+	venv/bin/aws s3 cp $(DIST)/src/_site/robots.txt s3://www.kieranbamforth.me/robots.txt --content-type "text/plain"
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
