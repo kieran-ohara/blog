@@ -120,8 +120,7 @@ infrastructure:
 		--template-file ${INFRASTRUCTURE_JSON}
 
 destroy-infrastructure:
-	venv/bin/aws cloudformation delete-stack \
-		--stack-name ${STACK_NAME}
+	aws cloudformation delete-stack --stack-name ${STACK_NAME}
 
 setup:
 	test -e ./Gemfile || ln -s $(CHALK_DIR)/Gemfile ./Gemfile
