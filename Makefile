@@ -45,77 +45,77 @@ standard:
 
 deploy: compress standard
 	bundle exec jekyll build --config ${CONFIG_FILES}
-	venv/bin/aws s3 rm s3://www.kieranbamforth.me/blog --recursive
+	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	# HTML
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.html" \
 		--content-type "text/html;charset=UTF-8" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# JS
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.js" \
 		--content-type "text/javascript" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# CSS
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.css" \
 		--content-type "text/css" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# XML
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.xml" \
 		--content-type "text/xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# EOT
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.eot" \
 		--content-type "application/vnd.ms-fontobject" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# TTF
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.ttf" \
 		--content-type "application/octet-stream" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# WOFF
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.woff" \
 		--content-type "font/woff" \
 		--cache-control "Cache-Control: max-age=3600"
 	# WOFF2
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.woff2" \
 		--content-type "font/woff2" \
 		--cache-control "Cache-Control: max-age=3600"
 	# SVG
-	venv/bin/aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
 		--exclude "*" \
 		--include "*.svg" \
 		--content-type "image/svg+xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# Robots.txt
-	venv/bin/aws s3 cp $(DIST)/src/_site/robots.txt s3://www.kieranbamforth.me/robots.txt --content-type "text/plain"
+	aws s3 cp $(DIST)/src/_site/robots.txt s3://www.kieranbamforth.me/robots.txt --content-type "text/plain"
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
 
 infrastructure:
 	venv/bin/python infrastructure/infrastructure.py > ${INFRASTRUCTURE_JSON}
-	venv/bin/aws cloudformation deploy \
+	aws cloudformation deploy \
 		--stack-name ${STACK_NAME} \
 		--template-file ${INFRASTRUCTURE_JSON}
 
