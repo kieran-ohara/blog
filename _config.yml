@@ -6,7 +6,7 @@ timezone: Europe/London
 # Site settings.
 title: kieranbamforth.me
 description: A braindump, mostly.
-url: http://www.kieranbamforth.me
+url: https://www.kieranbamforth.me
 baseurl: /blog
 permalink: /:categories/:title:output_ext
 
