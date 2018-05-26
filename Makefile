@@ -29,7 +29,8 @@ mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
 gzip -c $(1) > $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
 compress:
-	$(foreach file, $(shell find ./src/_site -name '*.html' -or -name '*.css' \
+	$(foreach file, $(shell find ./src/_site -name '*.html' \
+		-or -name '*.css' \
 		-or -name '*.js' \
 		-or -name '*.xml' \
 		-or -name '*.eot' \
@@ -43,7 +44,7 @@ endef
 standard:
 	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2' -or -name 'robots.txt'), $(call cp_file,$(file)))
 
-deploy: compress standard
+deploy: uglify compress standard
 	bundle exec jekyll build --config ${CONFIG_FILES}
 	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	# HTML
