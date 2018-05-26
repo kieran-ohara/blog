@@ -128,4 +128,11 @@ setup:
 	test -e ./package.json || ln -s $(CHALK_DIR)/package.json ./package.json
 	yarn install --modules-folder ./src/_assets/yarn
 
+define uglifycss
+mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
+csso --input $(1) --output $(1);
+endef
+uglify:
+	$(foreach file, $(shell find ./src/_site -name '*.css'), $(call uglifycss,$(file)))
+
 .PHONY: infrastructure
