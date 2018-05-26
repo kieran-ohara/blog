@@ -2,7 +2,7 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
-CHALK_FILES=_assets _layouts _my_tags about.html feed.xml index.html
+CHALK_FILES=_assets _layouts _my_tags about.html feed.xml
 CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
 CHALK_GITHUB=https://github.com/nielsenramon/chalk
 DIST=dist
@@ -35,6 +35,7 @@ compress:
 		-or -name '*.xml' \
 		-or -name '*.eot' \
 		-or -name '*.ttf' \
+		-or -name '*.ico' \
 		-or -name '*.svg'), $(call compress_file,$(file)))
 
 define cp_file
@@ -106,6 +107,13 @@ deploy: uglify compress standard
 		--exclude "*" \
 		--include "*.svg" \
 		--content-type "image/svg+xml" \
+		--cache-control "Cache-Control: max-age=3600" \
+		--content-encoding "gzip"
+	# ICO
+	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+		--exclude "*" \
+		--include "*.ico" \
+		--content-type "image/x-icon" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# Robots.txt

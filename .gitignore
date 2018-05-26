@@ -12,6 +12,5 @@ src/_my_tags
 src/_site
 src/about.html
 src/feed.xml
-src/index.html
 vendor
 venv
