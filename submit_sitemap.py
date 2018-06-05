@@ -1,9 +1,6 @@
-import pdb
-
 import httplib2
 import os
 
-from apiclient import errors
 from apiclient.discovery import build
 from oauth2client.client import OAuth2WebServerFlow
 
@@ -11,7 +8,6 @@ from oauth2client.client import OAuth2WebServerFlow
 CLIENT_ID = os.environ['CLIENT_ID']
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
 
-pdb.set_trace()
 # Check https://developers.google.com/webmaster-tools/search-console-api-original/v3/ for all available scopes
 OAUTH_SCOPE = 'https://www.googleapis.com/auth/webmasters'
 

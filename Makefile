@@ -2,7 +2,7 @@ INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
 STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
-CHALK_FILES=_assets _layouts _my_tags about.html feed.xml
+CHALK_FILES=_assets _layouts about.html feed.xml
 CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
 CHALK_GITHUB=https://github.com/nielsenramon/chalk
 DIST=dist
@@ -24,11 +24,18 @@ chalk-unlink:
 	$(foreach file, $(CHALK_FILES), $(call chalk_unlink_template,$(file),src))
 	$(foreach file, $(CHALK_INCLUDES), $(call chalk_unlink_template,$(file),src))
 
+define uglifycss
+mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
+csso --input $(1) --output $(1);
+endef
+uglify: build
+	$(foreach file, $(shell find ./src/_site -name '*.css'), $(call uglifycss,$(file)))
+
 define compress_file
 mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
 gzip -c $(1) > $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
-compress:
+compress: build
 	$(foreach file, $(shell find ./src/_site -name '*.html' \
 		-or -name '*.css' \
 		-or -name '*.js' \
@@ -42,11 +49,13 @@ define cp_file
 mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
 cp $(1) $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
-standard:
+standard: build
 	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2' -or -name 'robots.txt'), $(call cp_file,$(file)))
 
-deploy: uglify compress standard
+build:
 	bundle exec jekyll build --config ${CONFIG_FILES}
+
+deploy: uglify compress standard
 	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
 	# HTML
 	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
@@ -136,12 +145,5 @@ setup:
 	bundle install
 	test -e ./package.json || ln -s $(CHALK_DIR)/package.json ./package.json
 	yarn install --modules-folder ./src/_assets/yarn
-
-define uglifycss
-mkdir -p $(addprefix ./$(DIST)/,$(dir $1));
-csso --input $(1) --output $(1);
-endef
-uglify:
-	$(foreach file, $(shell find ./src/_site -name '*.css'), $(call uglifycss,$(file)))
 
 .PHONY: infrastructure
