@@ -35,4 +35,35 @@ balance with:
 - A healthy slice of idealism from articles I've curated over the past couple
     years.
 
-##Enroll people into your way of thinking
+## Enroll people into your way of thinking
+
+### Make your rationale clear, and progress visible.
+
+It's not uncommon for people to ask you "I have a glimmer of an idea, will you
+help me?" - think of all the time's somebody has asked you to build an app!
+
+The problem with this is it's too challenging - it's too open ended. If you
+were to help somebody else's "glimmer of an app idea", you'd have to sign up to
+an unlimited obligation to something unimportant to you and a possible waste of
+your time.
+
+Consider the alternative - if somebody asks for your help who demonstrates an
+understanding of:
+
+- The problem,
+- How their app is the solution,
+- The target audience of their app,
+- How much the app will cost,
+- The potential struggles/bottlenecks the app will come against, and crucially
+- They have a working prototype of the app,
+
+They have just asked a much easier question. How much more likely are you to
+help? Notice I didn't say anything how much money you'll get paid. Did pay
+cross you mind?
+
+**It's not enough to "bang a drum". Capture our imaginations with
+something tangible**
+
+Inspired by [The Bingo Method](https://getpocket.com/a/read/1701413391).
+
+### Learn to speak the Language of Value.
