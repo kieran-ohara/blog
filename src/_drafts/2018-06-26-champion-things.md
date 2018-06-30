@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  Champion things
+title:  Deliver your passions, focus on delivering real world results
 ---
 
-# Staff can deliver their passions by focusing on delivering real world results.
 
-## Intro
 
 An advantage of working at a place like the BBC is that we get to work with lots
 of different people, from different backgrounds and with different passions.
@@ -37,8 +35,6 @@ balance with:
 
 ## Enroll people into your way of thinking
 
-### Make your rationale clear, and progress visible.
-
 It's not uncommon for people to ask you "I have a glimmer of an idea, will you
 help me?" - think of all the time's somebody has asked you to build an app!
 
@@ -61,9 +57,34 @@ They have just asked a much easier question. How much more likely are you to
 help? Notice I didn't say anything how much money you'll get paid. Did pay
 cross you mind?
 
-**It's not enough to "bang a drum". Capture our imaginations with
-something tangible**
+**It's not enough to "bang a drum". Instead, capture imaginations with
+something tangible, and then sell it's value**.
 
-Inspired by [The Bingo Method](https://getpocket.com/a/read/1701413391).
+## Learn to speak the Language of Value.
 
-### Learn to speak the Language of Value.
+"**Engineers are hired to create value, not to program things**". This headline
+comes from from an article I read over a year ago called "Don't Call Yourself a
+Programmer", and it's perhaps some of the best career advice I've come across:
+
+"'Programmer' sounds like 'anomalously high cost person who types some
+mumbo-jumbo into some other mumbo-jumbo'. If you call yourself a programmer,
+someone is _already_ working on a way to get you fired".
+
+In fact, Salesforce's tagline is "No Software" - which roughly translates to
+"If you use Salesforce, you can lay off the expensive programmers working on
+expensive internal tools and pocket the difference in your bonus". And If you
+think _that_ sounds unfair, remember that _you're_ in the business of unemploying
+people.
+
+So, instead of saying "I'm working on the Jenkins pipeline", say "**I'm optimising
+the value stream so the team can ship business and product ideas faster**".
+Similarly, instead of saying "I want to upgrade Node v6 to v8", say "**I want to
+protect our reputation by reducing the potential for our audience's data to
+be compromised**".
+
+## Attention management, not time management.
+
+## Resources (in order of appearance):
+- [The Bingo Method](https://getpocket.com/a/read/1701413391).
+- [Don't call yourself a
+programmer](http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/).
