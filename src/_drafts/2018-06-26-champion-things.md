@@ -20,12 +20,12 @@ Some areas we disagree with each other include:
     - Tabs vs spaces. (By the way I retract my "no linters in the pipeline
         ever" stance)...
 
-So with the various passions & priorities going off, how do you get _your_
+So with the various passions and priorities going off, how do you get _your_
 passions heard and _your_ ideas delivered within Content Discovery? The topic of
 today's talk is on championing your passions, and leaving _your_ own tangible
 mark on our working culture.
 
-Disclaimer! It's based on my own experience & observations, so I've tried to
+Disclaimer! It's based on my own experience and observations, so I've tried to
 balance these with:
 
 - Concrete things I've witnessed,
@@ -59,7 +59,7 @@ cross you mind?
 **It's not enough to "bang a drum". Instead, capture imaginations with
 something tangible, and then sell it's value**.
 
-## Learn to speak the Language of Value.
+## Learn to speak the language of value.
 
 "**Engineers are hired to create value, not to program things**". This headline
 comes from from an article I read over a year ago called "_Don't Call Yourself a
@@ -109,9 +109,36 @@ The more butter you use, the bigger impact you'll make**.
 
 ## Learn when to lead, learn when to follow.
 
+Depending on your temperament, championing one passion at a time might be easier
+said than done. If you're the sort of person that has multiple projects on the
+go—the sort that ditches projects in their infancy for something more shiny—don't
+worry! You might find new research into leadership works in your favour:
+
+_A study in 2012 found in the 1980s, just 20% of the work happened in teams,
+compared to 80 percent in the 2010s. Therefore, people entering the workforce
+in the 21st century are sometimes referred to as the "we generation"_.
+
+The "we generation" emphasises **strong interpersonal skills and agility enable
+individuals to be effective in a generative partnership**—that is, a
+relationship designed for you and your team mates to go above and beyond what
+any one individual could achieve on their own. Generative partnerships are
+founded on traditional leadership and followship, except the roles are considered
+equal, and dynamic: **a team member can be both a leader _and_ a follower,
+depending on the group needs and context**.
+
+The idea was popularised by The Beatles; where each band member contributed their
+own ideas to _Sgt. Pepper's Lonely Hearts Club Band_. Whoever had the best idea
+became the leader and the other members would follow.
+
+**So, champion one passion and follow all the others you're interested in.**
+Followership is great for companies because it significantly increases
+performance metrics, and helps develop leadership. After all... you can't lead
+without followers.
+
 ## Resources (in order of appearance):
 - [The Bingo Method](https://getpocket.com/a/read/1701413391).
 - [Don't call yourself a programmer](http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/).
 - [Is it too little butter, or too much bread?](http://sethgodin.typepad.com/seths_blog/2015/12/is-it-too-little-butter-or-too-much-bread.html)
 - [Getting Things Done](https://www.amazon.co.uk/Getting-Things-Done-Stress-free-Productivity/dp/0349408947/ref=sr_1_1?ie=UTF8&qid=1530449922&sr=8-1&keywords=getting+things+done).
 - [Personal Kanban](https://www.amazon.co.uk/Personal-Kanban-Mapping-Work-Navigating/dp/1453802266/ref=sr_1_1?s=books&ie=UTF8&qid=1530449948&sr=1-1&keywords=personal+kanban).
+- [Leadership is Half the Story](https://www.blinkist.com/books/leadership-is-half-the-story-en?r=1&st=leadership%20is%20half%20the%20story).
