@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  Deliver your passions, focus on delivering real world results
+title:  Champion your passions!
 ---
 
+_I did a talk for my team in the BBC about how to champion your ideals.
+Following is a transcript of the talk with org. details taken out._
 
-
-An advantage of working at a place like the BBC is that we get to work with lots
+An advantage of working at a place in the tech industry is we get to work with lots
 of different people, from different backgrounds and with different passions.
 This means we get to learn from and enjoy the fruit of each other's labours, but
 it also means we inevitably disagree with each other.
@@ -21,16 +22,9 @@ Some areas we disagree with each other include:
         ever" stance)...
 
 So with the various passions and priorities going off, how do you get _your_
-passions heard and _your_ ideas delivered within Content Discovery? The topic of
-today's talk is on championing your passions, and leaving _your_ own tangible
+passions heard and _your_ ideas delivered within your org? The topic of
+today's post is on championing your passions, and leaving _your_ own tangible
 mark on our working culture.
-
-Disclaimer! It's based on my own experience and observations, so I've tried to
-balance these with:
-
-- Concrete things I've witnessed,
-- Discussions I've had with other team members, plus
-- A healthy slice of idealism from articles I've curated over time.
 
 ## Enroll people into your way of thinking
 
@@ -134,6 +128,7 @@ became the leader and the other members would follow.
 Followership is great for companies because it significantly increases
 performance metrics, and helps develop leadership. After all... you can't lead
 without followers.
+
 
 ## Resources (in order of appearance):
 - [The Bingo Method](https://getpocket.com/a/read/1701413391).
