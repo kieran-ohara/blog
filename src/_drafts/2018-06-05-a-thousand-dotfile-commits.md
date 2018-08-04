@@ -32,16 +32,24 @@ developers days to get their machines setup. Don&rsquo;t be that developer!
 
 ## Stop worrying and learn to love fuzzy finders.
 
-When I snap my fingers, you will forget all about your precious files. You will
-forget what they are called, where they are saved&hellip; all of it.
-Instead&mdash; with your new found grey matter&mdash;whenever you&rsquo;d like
-to:
+I'm going to make the assumption you have lots of projects on your machine, and
+because of this, you find yourself jumping in and out of directories in terminal
+sessions. Imagine how much time and clarity could be gained if you didn't have
+to care about the exact names and whereabouts of individual files?
 
-- Edit a file.
-- Change directory, or
-- Replay _that_ shell command you typed over a week ago*
+This is the scenario where investing in a decent "fuzzy finder" pays off
+in _dividends_. If you are familiar with _VSCode_'s "Command Palette" this is
+conceptually similar; You summon a fuzzy finder using a key-binding, and then
+start typing the name of the file or directory you want to go to. The fuzzy
+finder will narrow your search down as you type, so that once it is highlighted,
+you can hit enter and jump to right to it.
 
-You can just type it sloppily into your shell. No need for precision here.  And&hellip; [SNAP](https://github.com/junegunn/fzf)!
+Junegunn's [FZF](https://github.com/junegunn/fzf) is an example of such tool,
+and is one of the few tools that can genuinely boost your productivity to new
+heights. It can be installed with Homebrew so demands little effort from you to
+get going, but once you become accustomed to it you'll probably start checking
+out [more things it can fuzzy find](https://github.com/junegunn/fzf/wiki/Examples)
+and how to [integrate it with other tools](https://github.com/junegunn/fzf.vim).
 
 ## Alternate alt-tab.
 
