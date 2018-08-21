@@ -51,6 +51,30 @@ get going, but once you become accustomed to it you'll probably start checking
 out [more things it can fuzzy find](https://github.com/junegunn/fzf/wiki/Examples)
 and how to [integrate it with other tools](https://github.com/junegunn/fzf.vim).
 
-## Alternate alt-tab.
+## Invest in a window manager.
+
+How many times do you press Alt+Tab in a day? Keyboard-savvy users love this
+combination, as we can cycle through our open applications without our hands
+ever leaving the keyboard.
+
+But we can do better.
+
+I really dislike having to Alt-Tab more than once—especially if the application
+I want to jump to is in the middle of the stack. To alleviate this pain, I found
+that assigning global keyboard shortcuts to my most used applications saves
+_thousands_ of Alt-Tabs every month.
+
+I do this via a macOS Window Manager named
+[Mjolnir](https://github.com/sdegutis/mjolnir)—just don't ask me how to
+pronounce it! I have [mapped most keys to an
+application](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L22-L40),
+and love being able to summon any app I want to the foreground with one keyboard
+shortcut.
+
+Also note in the same file, I use Mjolnir to [resize the foreground window to
+half of the screen size](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
+using Vim's _H/J/K/L_ convention. Finally, I can [full-size the foreground
+window](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88),
+too!
 
 ## Ask for help
