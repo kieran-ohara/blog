@@ -3,12 +3,12 @@ layout: post
 title:  One thousand dotfile commits.
 ---
 
-Recently I made the 1000th commit to my dotfiles, and decided to
+Recently I made the 1000 commits to my dotfiles, and decided to
 mark the occasion by
 [open-sourcing them](https://www.github.com/kieran-bamforth/dotfiles)
-gradually (there's a lot of private stuff in there!). An unexpected nostalgia
-came about as I browsed the 2-year-old git log; workflow revolutionising patterns,
-learnings and tools evolved in front of me which I started to capture here.
+gradually. An unexpected nostalgia came while browsing the 2-year-old git
+log; workflow revolutionising patterns, learnings and tools evolved in place
+of which I'd like to share some here.
 
 - joy of migrating to standard tools
 - embracing unix philosophy
@@ -16,7 +16,15 @@ learnings and tools evolved in front of me which I started to capture here.
 - creating then sharing your own tools / dotfiles.
 - sharpen the knife
 
-## Automate your system setup.
+## Source-control & automate your system setup.
+
+I make the case if you find a tool difficult to install and/or configure,
+you'll be reluctant to learn how to use it—if at all. Take for instance
+[Karabiner](https://pqrs.org/osx/karabiner/): whilst it makes it super-easy to
+remap the keys on your keyboard, it has a tedious interface and a [complex
+configuration
+file](https://github.com/kieran-bamforth/dotfiles/blob/master/.config/karabiner/karabiner.json)
+to match—I don't fancy setting it up on every machine I use.
 
 - Brewfile
 When starting a new job, I've known it to be the case where it takes
@@ -46,7 +54,7 @@ out [more things it can find](https://github.com/junegunn/fzf/wiki/Examples)
 ## Invest in a window manager.
 
 How many times do you press Alt+Tab in a day? Keyboard-savvy users love this
-combination, as we can cycle through our open applications without our hands
+combination, as can cycle through our open applications without our hands
 ever leaving the keyboard—but we can do better.
 
 I really dislike having to Alt-Tab more than once, especially if the application
