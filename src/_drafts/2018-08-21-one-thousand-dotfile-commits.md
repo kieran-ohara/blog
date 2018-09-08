@@ -10,7 +10,7 @@ gradually. An unexpected nostalgia came while browsing the 2-year-old git
 log; workflow revolutionising patterns, learnings and tools evolved in place
 of which I'd like to share some here.
 
-## Source-control & automate your system setup.
+## Source-control & experiment with your workflow.
 
 I make the case if you find a tool difficult to install and/or configure,
 you'll be reluctant to learn how to use it—if at all. Take for instance
@@ -32,7 +32,7 @@ experts from intermediates. I don't claim to be a "command-line expert", but I
 do know the safety of a consistent, evolving workflow has bolstered my personal
 productivity; swapping clunky IDEs / GUIs for [small, sharp
 tools](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile#L68-L144)
-has become a hobby of mine.
+has become a fun hobby of mine (really).
 
 ## Embrace small, sharp tools. Embrace Unix.
 
