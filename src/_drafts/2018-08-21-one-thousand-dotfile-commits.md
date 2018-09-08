@@ -10,12 +10,6 @@ gradually. An unexpected nostalgia came while browsing the 2-year-old git
 log; workflow revolutionising patterns, learnings and tools evolved in place
 of which I'd like to share some here.
 
-- joy of migrating to standard tools
-- embracing unix philosophy
-- small sharp tools over large ones
-- creating then sharing your own tools / dotfiles.
-- sharpen the knife
-
 ## Source-control & automate your system setup.
 
 I make the case if you find a tool difficult to install and/or configure,
@@ -24,11 +18,27 @@ you'll be reluctant to learn how to use it—if at all. Take for instance
 remap the keys on your keyboard, it has a tedious interface and a [complex
 configuration
 file](https://github.com/kieran-bamforth/dotfiles/blob/master/.config/karabiner/karabiner.json)
-to match—I don't fancy setting it up on every machine I use.
+to match—I don't fancy setting it up on every machine I use. This is a shame,
+as I found remapping Caps-Lock really compliments my workflow. Fortunately for
+us, configuration files can be kept under source-control, meaning:
 
-- Brewfile
-When starting a new job, I've known it to be the case where it takes
-developers days to get their machines setup. Don&rsquo;t be that developer!
+- We can configure tools once, and copy the configuration everywhere.
+- We can afford to experiment with different settings, by `branching`, `merging`
+    and `reverting` changes as needed.
+- Remapping my Caps-Lock key is frictionless!
+
+In my opinion, experimentation and practice are some ingredients needed to distinguish
+experts from intermediates. I don't claim to be a "command-line expert", but I
+do know the safety of a consistent, evolving workflow has bolstered my personal
+productivity; swapping clunky IDEs / GUIs for [small, sharp
+tools](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile#L68-L144)
+has become a hobby of mine.
+
+## Embrace small, sharp tools. Embrace Unix.
+
+- embracing unix philosophy
+- small sharp tools over large ones
+- sharpen the knife
 
 ## Stop worrying and learn to love fuzzy finders.
 
@@ -51,7 +61,7 @@ effort to get going), and once you become accustomed to it you'll want to check
 out [more things it can find](https://github.com/junegunn/fzf/wiki/Examples)
 / [how to integrate it with other tools](https://github.com/junegunn/fzf.vim).
 
-## Invest in a window manager.
+## Invest in a window manager, avoid the mouse.
 
 How many times do you press Alt+Tab in a day? Keyboard-savvy users love this
 combination, as can cycle through our open applications without our hands
@@ -68,6 +78,6 @@ I do this via a macOS Window Manager named
 pronounce it! It's easy to configure, and is further extensible with plugins;
 I use it to [resize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
 and [maximize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
-windows, too!
+windows, too.
 
 ## Ask for help
