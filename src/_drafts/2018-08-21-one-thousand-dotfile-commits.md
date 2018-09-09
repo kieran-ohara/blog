@@ -38,7 +38,8 @@ has become a fun hobby of mine (really).
 
 - embracing unix philosophy
 - small sharp tools over large ones
-- sharpen the knife
+- sharpen the knife (Your dotfiles evolve over time with your personal style.
+    They are permanently transient.)
 
 ## Stop worrying and learn to love fuzzy finders.
 
