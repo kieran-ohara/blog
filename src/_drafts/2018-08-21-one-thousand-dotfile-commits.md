@@ -45,6 +45,11 @@ tools in sync across machines is now now reduced to running `$ brew bundle
 --global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
 
+## Automate _everything_.
+
+In case you didn't guess already, there's a theme going on here: **remove any
+friction that gets in between you and experimentation**.
+
 ## Embrace small, sharp tools. Embrace Unix.
 
 - embracing unix philosophy
