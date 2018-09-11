@@ -35,15 +35,14 @@ us, configuration files can be kept under source-control, meaning:
 In my experience, experimentation and practice help distinguish the
 experts from intermediates. I don't claim to be a "command-line expert", but I
 know the safety of a consistent, evolving workflow has bolstered my personal
-productivity; swapping clunky IDEs / GUIs for [small, sharp
-tools](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile#L68-L144)
-has become a fun hobby of mine (really).
+productivity; swapping clunky IDEs / GUIs for small, sharp tools has become a
+fun hobby of mine (really).
 
 This "hobby" is made even easier with the help of [Homebrew](https://brew.sh). I
 maintain a [Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)
 that lists all of the tools and apps I use. The pain and friction of keeping
-tools in sync across machines is now simply reduced to running `$ brew bundle
---global`. Of course, this encourages me to explore and experiment with new
+tools in sync across machines is now now reduced to running `$ brew bundle
+--global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
 
 ## Embrace small, sharp tools. Embrace Unix.
