@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  One thousand dotfile commits.
+title:  Lessons learned from 1000 dotfile commits.
 ---
 
 Recently I made the 1000 commits to my dotfiles, and decided to
@@ -10,7 +10,12 @@ gradually. An unexpected nostalgia came while browsing the 2-year-old git
 log; workflow revolutionising patterns, learnings and tools evolved in place
 of which I'd like to share some here.
 
-## Source-control, automate & experiment with your workflow.
+_Fair warning: this is more a dotfile "philosophy" post over_
+Top 10 list of tools that will change your life™! _Whilst I'm not against such
+list, it would take me a ~~long~~ infinite time to write **and** be outdated by the
+time I finished, so ¯\\_(ツ)_/¯._
+
+## Source-control and experiment with your workflow.
 
 I make the case if you find a tool difficult to install and/or configure,
 you'll be reluctant to learn how to use it—if at all. Take for instance
