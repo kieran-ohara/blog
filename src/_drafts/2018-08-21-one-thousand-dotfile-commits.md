@@ -10,7 +10,7 @@ gradually. An unexpected nostalgia came while browsing the 2-year-old git
 log; workflow revolutionising patterns, learnings and tools evolved in place
 of which I'd like to share some here.
 
-## Source-control & experiment with your workflow.
+## Source-control, automate & experiment with your workflow.
 
 I make the case if you find a tool difficult to install and/or configure,
 you'll be reluctant to learn how to use it—if at all. Take for instance
