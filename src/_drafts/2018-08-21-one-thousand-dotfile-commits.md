@@ -23,16 +23,23 @@ as I found remapping Caps-Lock really compliments my workflow. Fortunately for
 us, configuration files can be kept under source-control, meaning:
 
 - We can configure tools once, and copy the configuration everywhere.
-- We can afford to experiment with different settings, by `branching`, `merging`
-    and `reverting` changes as needed.
+- We can afford to experiment with different settings, by branching, merging
+    and reverting changes as needed.
 - Remapping my Caps-Lock key is frictionless!
 
-In my opinion, experimentation and practice are some ingredients needed to distinguish
+In my experience, experimentation and practice help distinguish the
 experts from intermediates. I don't claim to be a "command-line expert", but I
-do know the safety of a consistent, evolving workflow has bolstered my personal
+know the safety of a consistent, evolving workflow has bolstered my personal
 productivity; swapping clunky IDEs / GUIs for [small, sharp
 tools](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile#L68-L144)
 has become a fun hobby of mine (really).
+
+This "hobby" is made even easier with the help of [Homebrew](https://brew.sh). I
+maintain a [Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)
+that lists all of the tools and apps I use. The pain and friction of keeping
+tools in sync across machines is now simply reduced to running `$ brew bundle
+--global`. Of course, this encourages me to explore and experiment with new
+tools, and so the cycle continues.
 
 ## Embrace small, sharp tools. Embrace Unix.
 
