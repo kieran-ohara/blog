@@ -34,7 +34,7 @@ us, configuration files can be kept under source-control, meaning:
 
 In my experience, experimentation and practice help distinguish the
 experts from intermediates. I don't claim to be a "command-line expert", but I
-know the safety of a consistent, evolving workflow has bolstered my personal
+know the safety of a consistent yet evolving workflow has bolstered my personal
 productivity; swapping clunky IDEs / GUIs for small, sharp tools has become a
 fun hobby of mine (really).
 
@@ -44,6 +44,9 @@ that lists all of the tools and apps I use. The pain and friction of keeping
 tools in sync across machines is now now reduced to running `$ brew bundle
 --global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
+
+(Seriously check out [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle)—
+it's built right into Homebrew).
 
 ## Automate _everything_.
 
