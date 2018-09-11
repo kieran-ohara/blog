@@ -56,14 +56,12 @@ anything that gets in between you and experimentation**.
 Not really automation, but setup aliases.
 - Docker commands are awful and I use it alot.
 - Saving keyboard presses saves time/RSI.
-- Dotfiles kill mice.
+- Dotfiles kill mice. Speaking of use a window manager
 
 ## Embrace small, sharp tools. Embrace Unix.
 
 - embracing unix philosophy
 - small sharp tools over large ones
-- sharpen the knife (Your dotfiles evolve over time with your personal style.
-    They are permanently transient.)
 
 ## Stop worrying and learn to love fuzzy finders.
 
@@ -105,4 +103,9 @@ I use it to [resize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mj
 and [maximize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
 windows, too.
 
-## Ask for help
+## Ask for help / personal style
+- your dots are extension of self, your secret sauce
+- use computer to do the boring things faster than you ever could.
+- at the speed of thought cliche.
+- sharpen the knife (Your dotfiles evolve over time with your personal style.
+    They are permanently transient.)
