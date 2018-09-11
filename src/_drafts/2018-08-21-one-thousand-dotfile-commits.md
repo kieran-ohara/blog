@@ -30,7 +30,7 @@ us, configuration files can be kept under source-control, meaning:
 - We can configure tools once, and copy the configuration everywhere.
 - We can afford to experiment with different settings, by branching, merging
     and reverting changes as needed.
-- Remapping my Caps-Lock key is frictionless!
+- Remapping the Caps-Lock key becomes frictionless!
 
 In my experience, experimentation and practice help distinguish the
 experts from intermediates. I don't claim to be a "command-line expert", but I
