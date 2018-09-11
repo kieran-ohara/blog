@@ -45,7 +45,7 @@ tools in sync across machines is now now reduced to running `$ brew bundle
 --global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
 
-(Seriously check out [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle)—
+(Seriously check out [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle)—
 it's built right into Homebrew).
 
 ## Automate _everything_.
