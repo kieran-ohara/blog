@@ -50,8 +50,13 @@ it's built right into Homebrew).
 
 ## Automate _everything_.
 
-In case you didn't guess already, there's a theme going on here: **remove any
-friction that gets in between you and experimentation**.
+In case you didn't guess already, there's a theme going on here: **remove
+anything that gets in between you and experimentation**.
+
+Not really automation, but setup aliases.
+- Docker commands are awful and I use it alot.
+- Saving keyboard presses saves time/RSI.
+- Dotfiles kill mice.
 
 ## Embrace small, sharp tools. Embrace Unix.
 
