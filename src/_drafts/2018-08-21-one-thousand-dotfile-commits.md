@@ -3,6 +3,12 @@ layout: post
 title:  Lessons learned from 1000 dotfile commits.
 ---
 
+<style>
+table {
+    width:100%;
+}
+</style>
+
 Recently I made the 1000 commits to my dotfiles, and decided to
 mark the occasion by
 [open-sourcing them](https://www.github.com/kieran-bamforth/dotfiles)
@@ -41,26 +47,44 @@ fun hobby of mine (really).
 This "hobby" is made even easier with the help of [Homebrew](https://brew.sh). I
 maintain a [Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)
 that lists all of the tools and apps I use. The pain and friction of keeping
-tools in sync across machines is now now reduced to running `$ brew bundle
+tools in sync across machines is now removed thanks to `$ brew bundle
 --global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
 
 (Seriously check out [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle)—
 it's built right into Homebrew).
 
-## Automate _everything_.
+## Plugins can help you learn.
 
-In case you didn't guess already, there's a theme going on here: **remove
-anything that gets in between you and experimentation**.
+I make heavy use [ZShell](https://github.com/zsh-users/zsh),
+[Tmux](https://github.com/tmux/tmux) and [Vim](https://github.com/vim/vim); a
+comprehensive but hard-to-learn set of tools. I owe my adoption of these to
+open-source plugins, as they provided me with the quick gratification I needed
+to learn them.
+
+That said, I don't want to commit plugins to my dotfiles, as that would mean
+maintaining them. Instead, a good plugin-manager should install, upgrade and
+remove a list of plugins which I provide. The following table shows the
+plugin-managers I use, and their respective plugin list. Remember to commit your
+lists to source-control for quick n' easy experimenting!
+
+| Tool   | Plugin Manager                                                 | Plugin List                                                                              |
+| ---    | ---                                                            | ---                                                                                      |
+| macOS  | [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle) | [.Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)           |
+| Tmux   | [TPM](https://github.com/tmux-plugins/tpm)                     | [.tmux.conf](https://github.com/kieran-bamforth/dotfiles/blob/master/.tmux.conf#L36-L41) |
+| ZShell | [Antigen](https://github.com/zsh-users/antigen)                | [.antigenrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.antigenrc#L1-L20)  |
+| Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.vimrc#L4-L54)          |
+
+## Automate yourself.
 
 Not really automation, but setup aliases.
 - Docker commands are awful and I use it alot.
 - Saving keyboard presses saves time/RSI.
-- Dotfiles kill mice. Speaking of use a window manager
+    - Dotfiles kill mice. Speaking of use a window manager
 
 ## Embrace small, sharp tools. Embrace Unix.
 
-- embracing unix philosophy
+- embracing Unix philosophy
 - small sharp tools over large ones
 
 ## Stop worrying and learn to love fuzzy finders.
@@ -108,4 +132,4 @@ windows, too.
 - use computer to do the boring things faster than you ever could.
 - at the speed of thought cliche.
 - sharpen the knife (Your dotfiles evolve over time with your personal style.
-    They are permanently transient.)
+   They are permanently transient.)
