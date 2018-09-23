@@ -51,9 +51,6 @@ tools in sync across machines is now removed thanks to `$ brew bundle
 --global`. Needless to say, this encourages me to experiment and explore more
 tools, and so the cycle continues.
 
-(Seriously check out [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle)—
-it's built right into Homebrew).
-
 ## Plugins can help you learn.
 
 I make heavy use [ZShell](https://github.com/zsh-users/zsh),
@@ -65,8 +62,8 @@ to learn them.
 That said, I don't want to commit plugins to my dotfiles, as that would mean
 maintaining them. Instead, a good plugin-manager should install, upgrade and
 remove a list of plugins which I provide. The following table shows the
-plugin-managers I use, and their respective plugin list. Remember to commit your
-lists to source-control for quick n' easy experimenting!
+plugin-managers I use, with their respective plugin lists. Remember to commit
+these lists to source-control for quick n' easy experimenting!
 
 | Tool   | Plugin Manager                                                 | Plugin List                                                                              |
 | ---    | ---                                                            | ---                                                                                      |
@@ -74,6 +71,7 @@ lists to source-control for quick n' easy experimenting!
 | Tmux   | [TPM](https://github.com/tmux-plugins/tpm)                     | [.tmux.conf](https://github.com/kieran-bamforth/dotfiles/blob/master/.tmux.conf#L36-L41) |
 | ZShell | [Antigen](https://github.com/zsh-users/antigen)                | [.antigenrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.antigenrc#L1-L20)  |
 | Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.vimrc#L4-L54)          |
+|        |                                                                |                                                                                          |
 
 ## Automate yourself.
 
