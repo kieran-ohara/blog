@@ -73,18 +73,6 @@ these lists to source-control for quick n' easy experimenting!
 | Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.vimrc#L4-L54)          |
 |        |                                                                |                                                                                          |
 
-## Automate yourself.
-
-Not really automation, but setup aliases.
-- Docker commands are awful and I use it alot.
-- Saving keyboard presses saves time/RSI.
-    - Dotfiles kill mice. Speaking of use a window manager
-
-## Embrace small, sharp tools. Embrace Unix.
-
-- embracing Unix philosophy
-- small sharp tools over large ones
-
 ## Stop worrying and learn to love fuzzy finders.
 
 I'm going to make the assumption you have lots of projects on your machine, and
@@ -125,9 +113,33 @@ I use it to [resize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mj
 and [maximize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
 windows, too.
 
-## Ask for help / personal style
-- your dots are extension of self, your secret sauce
-- use computer to do the boring things faster than you ever could.
-- at the speed of thought cliche.
-- sharpen the knife (Your dotfiles evolve over time with your personal style.
-   They are permanently transient.)
+## Notes
+
+Reflect on the way you do things. Is there an easier way?
+	Use your computer to do the boring work faster than you ever could.
+		Smallest unit of automation is the alias,
+			For example, I find docker commands are too long, to type, so I have lots of docker aliases
+		When more advanced automation is needed it’s worth finding CLI tools that can be wrapped in functions.
+			Especially if said CLI tools embrace the Unix philosophy
+				Do one thing, and do it well.
+				Write programs to work together.
+				Write programs to handle text streams, because that is a universal interface.
+				Bad examples include Boxen, Powerline and YouCompleteMe).
+			Examples include AWS CLI & ssh, gitconfig, go-jira
+		Saving keyboard presses saves time/RSI. Dotfiles kill mice.
+	Learn how to learn.
+		Plugins only get you so far.
+			They abstract a lot of details away. What problems might arise?
+				If something is broken and you don't know the fix
+				If you want to expand a tool (such as ALE + LSP)
+			Plugins often come about from _other_ people's workflows, not your own.
+		Avoid recreating the wheel, use man pages (for Tmux, vim) / built in help / tldr.
+	Dotfiles are the digital extension of yourself.
+		They're your secret sauce.
+		Dotfiles evolve over time with your personal style.
+			They are permanently transient.
+			They are never perfect.
+			Perfection is the enemy of productivity.
+			Unix Philosophy: Don't hesitate to throw away the clumsy parts and rebuild them.
+		Allow you to work faster by focusing on "what" you're doing instead of the "how".
+	Sharpen the knife—A chef would not make a cut with a blunt blade.
