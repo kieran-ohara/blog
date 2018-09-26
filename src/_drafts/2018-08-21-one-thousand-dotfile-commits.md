@@ -3,23 +3,17 @@ layout: post
 title:  Lessons learned from 1000 dotfile commits.
 ---
 
-<style>
-table {
-    width:100%;
-}
-</style>
-
 Recently I made the 1000 commits to my dotfiles, and decided to
 mark the occasion by
 [open-sourcing them](https://www.github.com/kieran-bamforth/dotfiles)
 gradually. An unexpected nostalgia came while browsing the 2-year-old git
 log; workflow revolutionising patterns, learnings and tools evolved in place
-of which I'd like to share some here.
+of which some I'd like to share here.
 
-_Fair warning: this is more a dotfile "philosophy" post over_
-Top 10 list of tools that will change your life™! _Whilst I'm not against such
-list, it would take me a ~~long~~ infinite time to write **and** be outdated by the
-time I finished, so ¯\\_(ツ)_/¯._
+_Fair warning: this is more my dotfile "philosophy" over a_
+Top 10 list of tools that will change your life!™ _Whilst I'm not against such
+list, it would take me a ~~long~~ infinite time to write **and** be outdated if
+I finished, so ¯\\_(ツ)_/¯._
 
 ## Source-control and experiment with your workflow.
 
@@ -73,26 +67,46 @@ these lists to source-control for quick n' easy experimenting!
 | Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.vimrc#L4-L54)          |
 |        |                                                                |                                                                                          |
 
-## Stop worrying and learn to love fuzzy finders.
+## Sharpen the knife.
 
-I'm going to make the assumption you have lots of projects on your machine, and
-because of this, you find yourself jumping in and out of directories in terminal
-sessions. Imagine how much time and energy could be saved if you didn't have
-to care about the exact names and whereabouts of individual files?
+A chef wouldn't cut meat with a blunt knife—that would be both dangerous and
+counterproductive. Like chefs, we too must sharpen our knives; by being mindful
+of our workflow and cutting out any non-essential key presses or mouse clicks.
+Simply, dotfiles are to developers what the knife is to the chef.
 
-This is the scenario where investing in a decent fuzzy finder pays off
-in dividends. If you are familiar with _VSCode_'s Command Palette, this is
-conceptually similar: you summon a fuzzy finder using a key-binding, and then
-start typing the name of the file or directory you want to go to. The fuzzy
-finder will narrow your search down as you type, so that once it is highlighted,
-you can hit enter and jump to right to it.
+Enough metaphor—plugins are great but will only get you so far. They abstract
+the underlying tool away from you, meaning:
 
-Junegunn's [FZF](https://github.com/junegunn/fzf) is an example of such tool for
-your command line, and is one of the few tools that can quickly boost your
-productivity to new heights. It can be installed with Homebrew (so demands little
-effort to get going), and once you become accustomed to it you'll want to check
-out [more things it can find](https://github.com/junegunn/fzf/wiki/Examples)
-/ [how to integrate it with other tools](https://github.com/junegunn/fzf.vim).
+- If your plugin breaks, you'll not be much further than a new starter
+    (I suffered a [ZSH key binding](https://github.com/kieran-bamforth/dotfiles/blob/master/.zshrc#L56-L58)
+    _way_ longer than I should have), and
+- The plugin is optimised for the plugin's _author's_ workflow—not your own. We
+    must therefore learn how to reflect.
+
+Now I'm not saying "become a plugin developer" but I am saying think like one.
+If you are like me (or indeed every other developer), you'll probably type a lot
+of commands into a shell. What ones do you use the most? Which ones are _painful_
+to use? Myself, I use [Docker](https://www.docker.com/), I am a _huge_ Docker fan
+—but [that CLI](https://docs.docker.com/engine/reference/run/)...  there's far
+too much typing involved. But it turns out computers are good at automating—they
+can do the boring typing faster than we ever could:
+
+The smallest unit of automation I found—and indeed the quickest way to sharpen
+any knife, is with the humble `alias` command. Instead of typing `$ docker
+ps -aqf "status=exited" | xargs docker rm`, [this
+one liner](https://github.com/kieran-bamforth/dotfiles/blob/master/utilities.sh#L28)
+allows me to type `$ dkrmoc`, a mnemonic for `docker remove old containers`—a
+42 character saving. This is quite fortunate, as I like _not_ having RSI.
+
+As you get good at reflecting on and automating your workflow, you'll inevitably
+reach a point where vanilla bash is not enough. This is the point to start
+searching `homebrew` for CLI programs to wrap inside functions (here's an [AWS CLI
+Example](https://github.com/kieran-bamforth/dotfiles/blob/master/utilities.sh#L89-L195)
+:I don't ever want to work in [AWS
+Console](https://medium.com/@miriamschwab/i-love-you-aws-but-your-documentation-and-support-sucks-enormously-192e7d9b671d0!))
+. Just remember to commit any shiny new toys you find back into `.Brewfile`.
+
+Now... do we really need the mouse?
 
 ## Invest in a window manager, avoid the mouse.
 
@@ -113,33 +127,48 @@ I use it to [resize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mj
 and [maximize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
 windows, too.
 
-## Notes
+_When pairing with a co-worker on their machine, this is the tool I miss the most._
 
-Reflect on the way you do things. Is there an easier way?
-	Use your computer to do the boring work faster than you ever could.
-		Smallest unit of automation is the alias,
-			For example, I find docker commands are too long, to type, so I have lots of docker aliases
-		When more advanced automation is needed it’s worth finding CLI tools that can be wrapped in functions.
-			Especially if said CLI tools embrace the Unix philosophy
-				Do one thing, and do it well.
-				Write programs to work together.
-				Write programs to handle text streams, because that is a universal interface.
-				Bad examples include Boxen, Powerline and YouCompleteMe).
-			Examples include AWS CLI & ssh, gitconfig, go-jira
-		Saving keyboard presses saves time/RSI. Dotfiles kill mice.
-	Learn how to learn.
-		Plugins only get you so far.
-			They abstract a lot of details away. What problems might arise?
-				If something is broken and you don't know the fix
-				If you want to expand a tool (such as ALE + LSP)
-			Plugins often come about from _other_ people's workflows, not your own.
-		Avoid recreating the wheel, use man pages (for Tmux, vim) / built in help / tldr.
-	Dotfiles are the digital extension of yourself.
-		They're your secret sauce.
-		Dotfiles evolve over time with your personal style.
-			They are permanently transient.
-			They are never perfect.
-			Perfection is the enemy of productivity.
-			Unix Philosophy: Don't hesitate to throw away the clumsy parts and rebuild them.
-		Allow you to work faster by focusing on "what" you're doing instead of the "how".
-	Sharpen the knife—A chef would not make a cut with a blunt blade.
+## Embrace imperfection.
+
+Does that sound like a TV ad? because I mean it. I've spent a _long_ time
+chasing the perfect workflow, with perfect dotfiles. This time is spent
+pondering:
+
+- What keyboard shortcut should I bind to?
+- Is there a better keyboard shortcut?
+- Am I using the _correct_ plugin?
+- Is there a better plugin?
+- Am I using too many plugins?
+- What will other people think of the setup I have?
+- et. al.
+
+I can whole-heartedly tell you this is all energy wasted. Firstly, _few_ people
+will GAF about your dotfiles. Secondly, they will never be perfect.
+
+As you evolve your workflow, tools and style; so too will your dots. In this regard
+they are permanently transient, a digital extension of yourself that thinks of
+"what am I doing?" as opposed to "how do I do it?". Perfection is the enemy of
+productivity—it took me 6 months to write this blog post.
+
+## Go dots.
+
+If you've read this far—thanks for entertaining me! I can't imagine it was a
+_fun_ read unless you're keen on workflow, productivity and/or tooling (I happen
+to :heart: all 3). If you're new to all this, I hope it encourages you to keep
+on experimenting, and offers a glimpse down a well-trodden path (you're
+productivity is going to sky rocket!).
+
+If you know all this stuff and I haven't offered you anything new... I find great
+satisfaction in sharing this stuff with less experienced colleagues. You could
+be responsible for an "aha!" moment somebody _gets_ the CLI, and thereby sets off
+on their own dotfile adventure. Maybe you could share your own tips? Maybe you could...
+_share this article_?
+
+Obligatory plug done, I call that a day.
+
+<style>
+table {
+    width:100%;
+}
+</style>
