@@ -21,11 +21,10 @@ I make the case if you find a tool difficult to install and/or configure,
 you'll be reluctant to learn how to use it—if at all. Take for instance
 [Karabiner](https://pqrs.org/osx/karabiner/): whilst it makes it super-easy to
 remap the keys on your keyboard, it has a tedious interface and a [complex
-configuration
-file](https://github.com/kieran-bamforth/dotfiles/blob/master/.config/karabiner/karabiner.json)
-to match—I don't fancy setting it up on every machine I use. This is a shame,
-as I found remapping Caps-Lock really compliments my workflow. Fortunately for
-us, configuration files can be kept under source-control, meaning:
+configuration file][karabiner-config] to match—I don't fancy setting it up on
+every machine I use. This is a shame, as I found remapping Caps-Lock really
+compliments my workflow. Fortunately for us, configuration files can be kept
+under source-control, meaning:
 
 - We can configure tools once, and copy the configuration everywhere.
 - We can afford to experiment with different settings, by branching, merging
@@ -39,11 +38,10 @@ productivity; swapping clunky IDEs / GUIs for small, sharp tools has become a
 fun hobby of mine (really).
 
 This "hobby" is made even easier with the help of [Homebrew](https://brew.sh). I
-maintain a [Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)
-that lists all of the tools and apps I use. The pain and friction of keeping
-tools in sync across machines is now removed thanks to `$ brew bundle
---global`. Needless to say, this encourages me to experiment and explore more
-tools, and so the cycle continues.
+maintain a [Brewfile][brewfile] that lists all of the tools and apps I use. The
+pain and friction of keeping tools in sync across machines is now removed thanks
+to `$ brew bundle --global`. Needless to say, this encourages me to experiment
+and explore more tools, and so the cycle continues.
 
 ## Plugins can help you learn.
 
@@ -59,13 +57,13 @@ remove a list of plugins which I provide. The following table shows the
 plugin-managers I use, with their respective plugin lists. Remember to commit
 these lists to source-control for quick n' easy experimenting!
 
-| Tool   | Plugin Manager                                                 | Plugin List                                                                              |
-| ---    | ---                                                            | ---                                                                                      |
-| macOS  | [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle) | [.Brewfile](https://github.com/kieran-bamforth/dotfiles/blob/master/.Brewfile)           |
-| Tmux   | [TPM](https://github.com/tmux-plugins/tpm)                     | [.tmux.conf](https://github.com/kieran-bamforth/dotfiles/blob/master/.tmux.conf#L36-L41) |
-| ZShell | [Antigen](https://github.com/zsh-users/antigen)                | [.antigenrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.antigenrc#L1-L20)  |
-| Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc](https://github.com/kieran-bamforth/dotfiles/blob/master/.vimrc#L4-L54)          |
-|        |                                                                |                                                                                          |
+| Tool   | Plugin Manager                                                 | Plugin List                |
+| ---    | ---                                                            | ---                        |
+| macOS  | [homebrew-bundle](https://github.com/Homebrew/homebrew-bundle) | [.Brewfile][brewfile]      |
+| Tmux   | [TPM](https://github.com/tmux-plugins/tpm)                     | [.tmux.conf][tpm-conf]     |
+| ZShell | [Antigen](https://github.com/zsh-users/antigen)                | [.antigenrc][antigen-conf] |
+| Vim    | [vim-plug](https://github.com/junegunn/vim-plug)               | [.vimrc][vim-plug]         |
+|        |                                                                |                            |
 
 ## Sharpen the knife.
 
@@ -78,8 +76,8 @@ Enough metaphor—plugins are great but will only get you so far. They abstract
 the underlying tool away from you, meaning:
 
 - If your plugin breaks, you'll not be much further than a new starter
-    (I suffered a [ZSH key binding](https://github.com/kieran-bamforth/dotfiles/blob/master/.zshrc#L56-L58)
-    _way_ longer than I should have), and
+    (I suffered a [ZSH key binding][zsh-key-binding] _way_ longer than I should
+    have), and
 - The plugin is optimised for the plugin's _author's_ workflow—not your own. We
     must therefore learn how to reflect.
 
@@ -93,16 +91,14 @@ can do the boring typing faster than we ever could:
 
 The smallest unit of automation I found—and indeed the quickest way to sharpen
 any knife, is with the humble `alias` command. Instead of typing `$ docker
-ps -aqf "status=exited" | xargs docker rm`, [this
-one liner](https://github.com/kieran-bamforth/dotfiles/blob/master/utilities.sh#L28)
+ps -aqf "status=exited" | xargs docker rm`, [this one liner][docker-rm-alias]
 allows me to type `$ dkrmoc`, a mnemonic for `docker remove old containers`—a
 42 character saving. This is quite fortunate, as I like _not_ having RSI.
 
 As you get good at reflecting on and automating your workflow, you'll inevitably
 reach a point where vanilla bash is not enough. This is the point to start
 searching `homebrew` for CLI programs to wrap inside functions (here's an [AWS CLI
-Example](https://github.com/kieran-bamforth/dotfiles/blob/master/utilities.sh#L89-L195)
-:I don't ever want to work in [AWS
+Example][aws-cli-example] :I don't ever want to work in [AWS
 Console](https://medium.com/@miriamschwab/i-love-you-aws-but-your-documentation-and-support-sucks-enormously-192e7d9b671d0!))
 . Just remember to commit any shiny new toys you find back into `.Brewfile`.
 
@@ -116,16 +112,14 @@ ever leaving the keyboard—but we can do better.
 
 I really dislike having to Alt-Tab more than once, especially if the application
 I want to use is in the middle of the stack. To alleviate this pain, I found
-[assigning global keyboard shortcuts to my most used
-applications](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L22-L40)
+[assigning global keyboard shortcuts to my most used applications][mjolnir-shortcuts]
 saves _thousands_ of Alt-Tabs every month.
 
 I do this via a macOS Window Manager named
 [Mjolnir](https://github.com/sdegutis/mjolnir)—just don't ask me how to
 pronounce it! It's easy to configure, and is further extensible with plugins;
-I use it to [resize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
-and [maximize](https://github.com/kieran-bamforth/dotfiles/blob/master/.mjolnir/init.lua#L54-L88)
-windows, too.
+I use it to [resize][mjolnir-resize] and [maximize][mjolnir-mazimize] windows,
+too.
 
 _When pairing with a co-worker on their machine, this is the tool I miss the most._
 
@@ -165,10 +159,22 @@ be responsible for an "aha!" moment somebody _gets_ the CLI, and thereby sets of
 on their own dotfile adventure. Maybe you could share your own tips? Maybe you could...
 _share this article_?
 
-Obligatory plug done, I call that a day.
+`$ shameless_plug && exit`
 
 <style>
 table {
     width:100%;
 }
 </style>
+
+[antigen-conf]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.antigenrc#L1-L20
+[aws-cli-example]:  https://github.com/kieran-bamforth/dotfiles/blob/c22e8de0d1b262c30c1cb7c47854375d72f26de0/utilities.sh#L89-L195
+[brewfile]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.Brewfile
+[docker-rm-alias]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/utilities.sh#L28
+[karabiner-config]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.config/karabiner/karabiner.json
+[mjolnir-mazimize]: https://github.com/kieran-bamforth/dotfiles/blob/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.mjolnir/init.lua#L91-L93
+[mjolnir-resize]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.mjolnir/init.lua#L54-L88
+[mjolnir-shortcuts]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.mjolnir/init.lua#L22-L40
+[tpm-conf]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.tmux.conf#L36-L41
+[vim-plug]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.vimrc#L4-L54
+[zsh-key-binding]: https://github.com/kieran-bamforth/dotfiles/tree/c22e8de0d1b262c30c1cb7c47854375d72f26de0/.zshrc#L56-L58
