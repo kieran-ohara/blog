@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Lessons learned from 1000 dotfile commits.
+tags: dotfiles
 ---
 
 Recently I made the 1000 commits to my dotfiles, and decided to
