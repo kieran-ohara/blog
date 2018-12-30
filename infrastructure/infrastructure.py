@@ -119,7 +119,7 @@ cloudfront_dist = template.add_resource(Distribution(
         Enabled=True,
         HttpVersion='http2',
         ViewerCertificate=ViewerCertificate(
-            AcmCertificateArn='arn:aws:acm:us-east-1:855277617897:certificate/8b0604e4-b83b-419c-bc64-d06849c6b5ce',
+            AcmCertificateArn='arn:aws:acm:us-east-1:855277617897:certificate/13bb6551-0886-4371-9a7f-c071aa6f0f36',
             SslSupportMethod='sni-only'
             ),
         Logging=Logging(
