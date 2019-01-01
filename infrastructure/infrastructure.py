@@ -36,69 +36,6 @@ content_bucket_poilcy = template.add_resource(s3.BucketPolicy(
         }
     ))
 
-redirect_bucket_kieranbamforth_me = template.add_resource(s3.Bucket(
-    'bucketKieranBamforthMe',
-    BucketName='kieranbamforth.me',
-    WebsiteConfiguration=s3.WebsiteConfiguration(
-        RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
-            HostName='www.kieranbamforth.me',
-            Protocol='https'
-            )
-        )
-    ))
-
-redirect_record_set_kieranbamforthme = template.add_resource(r53.RecordSetType(
-    'recordSetKieranBamforthMe',
-    AliasTarget=r53.AliasTarget(
-        HostedZoneId='Z1BKCTXD74EZPE',
-        DNSName='s3-website-eu-west-1.amazonaws.com'),
-    HostedZoneName='kieranbamforth.me.',
-    Name='kieranbamforth.me.',
-    Type='A'
-    ))
-
-redirect_bucket_irkb = template.add_resource(s3.Bucket(
-    'bucket2',
-    BucketName='irkb.me',
-    WebsiteConfiguration=s3.WebsiteConfiguration(
-        RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
-            HostName='www.kieranbamforth.me',
-            Protocol='https'
-            )
-        )
-    ))
-
-redirect_bucket_irkb_www = template.add_resource(s3.Bucket(
-    'bucket3',
-    BucketName='www.irkb.me',
-    WebsiteConfiguration=s3.WebsiteConfiguration(
-        RedirectAllRequestsTo=s3.RedirectAllRequestsTo(
-            HostName='www.kieranbamforth.me',
-            Protocol='https'
-            )
-        )
-    ))
-
-redirect_record_set_irkb = template.add_resource(r53.RecordSetType(
-    'recordSetIrkb',
-    AliasTarget=r53.AliasTarget(
-        HostedZoneId='Z1BKCTXD74EZPE',
-        DNSName='s3-website-eu-west-1.amazonaws.com'),
-    HostedZoneName='irkb.me.',
-    Name='irkb.me.',
-    Type='A'
-    ))
-
-redirect_record_set_irkb_www = template.add_resource(r53.RecordSetType(
-    'recordSetIrkbWww',
-    AliasTarget=r53.AliasTarget(
-        HostedZoneId='Z1BKCTXD74EZPE',
-        DNSName='s3-website-eu-west-1.amazonaws.com'),
-    HostedZoneName='irkb.me.',
-    Name='www.irkb.me.',
-    Type='A'
-    ))
-
 cloudfront_logs_bucket = template.add_resource(s3.Bucket(
     'bucketLogs'
     ))
