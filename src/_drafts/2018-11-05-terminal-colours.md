@@ -5,14 +5,15 @@ tags: dotfiles
 ---
 
 Thanks to [/r/unixporn][unixporn], I'm _obsessed_ with good-looking terminals;
-a casual browse foreshadows grokking the terminal's innards at some point
-down-the-line. I'm surfacing today to help your terminal's colours **pop** off
-the screen—an **ode to your eyes** for consuming so much code everyday.
+a casual browse begets studying your terminal's innards at some point down
+the line... Recently I learned how to make my terminals' colours **pop** off the
+screen—now I want the same for yours! Consider this post an _ode to your eyes_
+for consuming so much internet everyday.
 
-Alright enough hype. The first thing you're going to need is this `colour_bar`
-function [from my dotfiles][colour-bar]:
+We'll start by querying your terminal; copy and paste the following
+commands to learn *how many colours* your terminal can display:
 
-```
+```shell
 awk 'BEGIN{
     s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
     for (colnum = 0; colnum<77; colnum++) {
@@ -28,22 +29,14 @@ awk 'BEGIN{
 }'
 ```
 
+If you see a smooth rainbow of colours
 
--Make terminal look amazing
-    -When I started out, I didn't realise how good terminals could look!
-        -Start off with iTerm and oh-my-ZSH themes
-            - Bold and thin text
-        - Got into VIM, and started to find all-in-one themes
-            - Themes that could work for iTerm, Vim and powerline.
-                - solarized
-                - Replaced powerline with Airline + tmuxline
-    - Found gruvbox and noticed my colour scheme just did not match
-        - italics were not working
-        - colour was dimmer
-            - set/help termguicolors
-            - help xterm-true-color
-            - help terminal-options
-
+- Found gruvbox and noticed my colour scheme just did not match
+    - italics were not working
+    - colour was dimmer
+        - set/help termguicolors
+        - help xterm-true-color
+        - help terminal-options
 
 [ncurses]: https://www.gnu.org/software/ncurses/
 [unixporn]: https://www.reddit.com/r/unixporn/
