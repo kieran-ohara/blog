@@ -55,78 +55,80 @@ standard: build
 build:
 	bundle exec jekyll build --config ${CONFIG_FILES}
 
+S3_BUCKET:=s3://s3.kieranbamforth.me/apps/blog
+
 deploy: uglify compress standard
-	aws s3 rm s3://www.kieranbamforth.me/blog --recursive
+	aws s3 rm $(S3_BUCKET) --recursive
 	# HTML
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.html" \
 		--content-type "text/html;charset=UTF-8" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# JS
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.js" \
 		--content-type "text/javascript" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# CSS
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.css" \
 		--content-type "text/css" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# XML
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.xml" \
 		--content-type "text/xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# EOT
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.eot" \
 		--content-type "application/vnd.ms-fontobject" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# TTF
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.ttf" \
 		--content-type "application/octet-stream" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# WOFF
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.woff" \
 		--content-type "font/woff" \
 		--cache-control "Cache-Control: max-age=3600"
 	# WOFF2
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.woff2" \
 		--content-type "font/woff2" \
 		--cache-control "Cache-Control: max-age=3600"
 	# SVG
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.svg" \
 		--content-type "image/svg+xml" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# ICO
-	aws s3 cp $(DIST)/src/_site s3://www.kieranbamforth.me/blog --recursive \
+	aws s3 cp $(DIST)/src/_site $(S3_BUCKET) --recursive \
 		--exclude "*" \
 		--include "*.ico" \
 		--content-type "image/x-icon" \
 		--cache-control "Cache-Control: max-age=3600" \
 		--content-encoding "gzip"
 	# Robots.txt
-	aws s3 cp $(DIST)/src/_site/robots.txt s3://www.kieranbamforth.me/robots.txt --content-type "text/plain"
+	aws s3 cp $(DIST)/src/_site/robots.txt $(S3_BUCKET) --content-type "text/plain"
 
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
