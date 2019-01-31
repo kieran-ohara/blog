@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Level-up your terminal's colours.
-tags: dotfiles
 ---
 
 Thanks to [/r/unixporn][unixporn], I'm _obsessed_ with good-looking terminals;
