@@ -1,5 +1,3 @@
-INFRASTRUCTURE_JSON=${CURDIR}/infrastructure/infrastructure.json
-STACK_NAME=jekyll-blog
 CHALK_DIR=${CURDIR}/vendor/chalk
 CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
 CHALK_FILES=_assets _layouts about.html feed.xml
@@ -133,19 +131,8 @@ deploy: uglify compress standard
 serve:
 	bundle exec jekyll serve --drafts --config ${CONFIG_FILES}
 
-infrastructure:
-	venv/bin/python infrastructure/infrastructure.py > ${INFRASTRUCTURE_JSON}
-	aws cloudformation deploy \
-		--stack-name ${STACK_NAME} \
-		--template-file ${INFRASTRUCTURE_JSON}
-
-destroy-infrastructure:
-	aws cloudformation delete-stack --stack-name ${STACK_NAME}
-
 setup:
 	test -e ./Gemfile || ln -s $(CHALK_DIR)/Gemfile ./Gemfile
 	bundle install
 	test -e ./package.json || ln -s $(CHALK_DIR)/package.json ./package.json
 	yarn install --modules-folder ./src/_assets/yarn
-
-.PHONY: infrastructure
