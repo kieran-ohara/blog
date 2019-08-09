@@ -1,8 +1,4 @@
-CHALK_DIR=${CURDIR}/vendor/chalk
-CONFIG_FILES=${CHALK_DIR}/_config.yml,${CURDIR}/_config.yml
-CHALK_FILES=_assets _layouts about.html feed.xml
-CHALK_INCLUDES=_includes/image.html _includes/svg-icon.html
-CHALK_GITHUB=https://github.com/nielsenramon/chalk
+CONFIG_FILES=src/_config.yml,${CURDIR}/_config.yml
 DIST=dist
 
 chalk:
@@ -49,6 +45,16 @@ cp $(1) $(addprefix $(DIST)/,$(basename $1))$(suffix $1);
 endef
 standard: build
 	$(foreach file, $(shell find ./src/_site -name '*.woff' -or -name '*.woff2' -or -name 'robots.txt'), $(call cp_file,$(file)))
+
+src/_assets/yarn: src/package.json
+	docker build --tag blog-assets .
+	docker run -it -v $(PWD):/app -w /app blog-assets \
+		/bin/bash -c 'yarn install --modules-folder ./src/_assets/yarn'
+
+src/_site: src/_assets/yarn $(shell find ./src -name '*' -not -path '*/_site*')
+	docker build --tag blog-build .
+	docker run -it -v $(PWD):/app -w /app blog-build \
+		/bin/bash -c 'jekyll build --config src/_config.yml,_config.yml'
 
 build:
 	bundle exec jekyll build --config ${CONFIG_FILES}

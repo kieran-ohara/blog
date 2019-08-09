@@ -22,7 +22,7 @@ exclude:
   - Gemfile.lock
 
 # Chalk settings.
-rss_enabled: false
+rss_enabled: true
 name: kieranbamforth.me
 social:
     github: kieran-bamforth
