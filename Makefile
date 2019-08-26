@@ -84,4 +84,4 @@ deploy: src/_site
 		--content-type "image/png" \
 		--cache-control "Cache-Control: max-age=3600" \
 	# Robots.txt
-	aws s3 cp $</robots.txt $(S3_BUCKET) --content-type "text/plain"
+	aws s3 cp $</robots.txt $(S3_BUCKET)/robots.txt --content-type "text/plain"
