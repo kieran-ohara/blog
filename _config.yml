@@ -7,7 +7,7 @@ timezone: Europe/London
 title: kieranbamforth.me
 description: A braindump, mostly.
 url: https://www.kieranbamforth.me
-permalink: /:categories/:title:output_ext
+permalink: /:categories/:title
 
 # Jekyll paginate
 paginate: 25
