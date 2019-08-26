@@ -7,13 +7,10 @@ timezone: Europe/London
 title: kieranbamforth.me
 description: A braindump, mostly.
 url: https://www.kieranbamforth.me
-baseurl: /blog
 permalink: /:categories/:title:output_ext
 
-# Contact / handles.
-email: hello@kieranbamforth.me
-twitter_username: kieran_bamforth
-github_username:  kieran-bamforth
+# Jekyll paginate
+paginate: 25
 
 # Build settings.
 markdown: kramdown
