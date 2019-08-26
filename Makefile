@@ -71,5 +71,17 @@ deploy: src/_site
 		--include "*.ico" \
 		--content-type "image/x-icon" \
 		--cache-control "Cache-Control: max-age=3600" \
+	# JPG
+	aws s3 cp $< $(S3_BUCKET) --recursive \
+		--exclude "*" \
+		--include "*.jpg" \
+		--content-type "image/jpeg" \
+		--cache-control "Cache-Control: max-age=3600" \
+	# PNG
+	aws s3 cp $< $(S3_BUCKET) --recursive \
+		--exclude "*" \
+		--include "*.png" \
+		--content-type "image/png" \
+		--cache-control "Cache-Control: max-age=3600" \
 	# Robots.txt
 	aws s3 cp $</robots.txt $(S3_BUCKET) --content-type "text/plain"
