@@ -7,6 +7,7 @@ src/_assets/yarn: src/package.json
 
 src/_site: _config.yml src/_assets/yarn $(shell find ./src -name '*' -not -path '*/_site*')
 	rm $@ || true
+	rm -rf .jekyll-cache/ || true
 	docker build --tag blog-build .
 	docker run -it -v $(PWD):/app -e JEKYLL_ENV=$(JEKYLL_ENV) -w /app blog-build \
 		/bin/bash -c 'jekyll build --config src/_config.yml,_config.yml'

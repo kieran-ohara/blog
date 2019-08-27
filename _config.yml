@@ -27,5 +27,6 @@ social:
     email: hello@kieranbamforth.me
     linkedin: kieran-bamforth
 ga_analytics: UA-58001717-3
+disqus_shortname: kieranbamforth
 scrollappear_enabled: false
 local_fonts: true
