@@ -4,6 +4,7 @@ src/_assets/yarn: src/package.json
 		/bin/bash -c 'yarn install --modules-folder ./src/_assets/yarn'
 
 src/_site: _config.yml src/_assets/yarn $(shell find ./src -name '*' -not -path '*/_site*')
+	rm $@ || return true
 	docker build --tag blog-build .
 	docker run -it -v $(PWD):/app -w /app blog-build \
 		/bin/bash -c 'jekyll build --config src/_config.yml,_config.yml'
