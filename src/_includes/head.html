@@ -29,6 +29,10 @@
     <meta name="twitter:image" content="{{ site.url }}{% asset og-image.jpg @path %}">
   {% endif %}
 
+  {% if page.path contains '_posts' %}
+    <link rel="amphtml" href="{{ page.id | prepend: '/amp' | prepend: site.baseurl | prepend: site.url | append: '.html' }}">
+  {% endif %}
+
   <link href="{{ 'feed.xml' | absolute_url }}" type="application/rss+xml" rel="alternate" title="{{ site.name }} Last 10 blog posts" />
 
   {% if site.local_fonts %}
@@ -62,5 +66,5 @@
     {% endif %}
 
   {% endif %}
-  
+
 </head>
