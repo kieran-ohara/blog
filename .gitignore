@@ -1,4 +1,6 @@
 /.jekyll-cache
-/src/_site
+/.sass-cache
 /src/_assets/yarn/
+/src/_sass
+/src/_site
 /vendor

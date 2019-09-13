@@ -10,6 +10,7 @@ phases:
   build:
     commands:
       - npm install --prefix src
+      - mv src/node_modules/bourbon/core src/_sass
       - mv src/node_modules src/_assets/yarn
       - jekyll build --config src/_config.yml,_config.yml
 artifacts:
