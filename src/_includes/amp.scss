@@ -64,7 +64,7 @@ body {
   width: 100%;
   max-width: 700px;
   margin: 16px auto 0 auto;
-  box-sizing: content-box;
+  box-sizing: border-box;
   @include respond-to(800) {
     padding: 0 $rs * 1;
   }
@@ -96,7 +96,7 @@ body {
   margin: 0 auto;
   position: relative;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 
   .blog-title {
     margin-bottom: 8px;
@@ -121,8 +121,8 @@ body {
 .content {
   width: 100%;
   max-width: 700px;
-  margin: 25px auto 0 auto;
-  box-sizing: content-box;
+  margin: 0 auto 0 auto;
+  box-sizing: border-box;
   @include respond-to(800) {
     padding: 0 $rs * 1;
   }
@@ -384,7 +384,7 @@ body {
     .isLeft {
       float: left;
       width: 47%;
-      box-sizing: content-box;
+      box-sizing: border-box;
       @include respond-to(800) {
         width: 100%;
         padding-bottom: $rs * 2;
@@ -441,7 +441,7 @@ body {
     .isRight {
       float: right;
       width: 47%;
-      box-sizing: content-box;
+      box-sizing: border-box;
       @include respond-to(800) {
         width: 100%;
       }
