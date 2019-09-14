@@ -33,7 +33,7 @@ local_fonts: true
 
 # Amplify settings.
 author_image: "/assets/author.jpg"
-bio: A software engineer, keen on leadership & productivity (invite me to your parties :dancer:).
+# bio: A software engineer, keen on leadership & productivity (invite me to your parties :dancer:).
 
 plugins:
   - jekyll-assets
