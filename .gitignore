@@ -2,3 +2,6 @@
 /src/_site
 /src/_assets/yarn/
 /vendor
+.sass-cache
+.tool-versions
+src/_sass
