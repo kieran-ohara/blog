@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title | xml_escape }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "datePublished": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
+  "dateModified": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
+  "author": {
+    "@type": "Person",
+    "name": "Kieran Bamforth",
+    "url": "{{ '/' | relative_url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{% asset apple-touch-icon-light.png @path %}",
+      "height": "180",
+      "width": "180"
+    }
+  },
+  "description": "{{ page.description }}",
+  "inLanguage": "en-GB",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{% asset apple-touch-icon-light.png @path %}",
+    "height": "180",
+    "width": "180"
+  }
+}

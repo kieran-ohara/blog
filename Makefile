@@ -1,12 +1,16 @@
 JEKYLL_ENV:=production
 CONTAINER_NAME:=855277617897.dkr.ecr.eu-west-1.amazonaws.com/core-blogim-rkehz4g9knp0
 
+src/_sass/bourbon: src/package.json
+	npm install bourbon
+	mv node_modules/bourbon/core/* src/_sass
+
 src/_assets/yarn: src/package.json
 	docker build --tag $(CONTAINER_NAME):latest .
 	docker run -it -v $(PWD):/app -w /app $(CONTAINER_NAME):latest \
 		/bin/bash -c 'yarn install --modules-folder ./src/_assets/yarn'
 
-src/_site: _config.yml src/_assets/yarn $(shell find ./src -name '*' -not -path '*/_site*')
+src/_site: _config.yml src/_assets/yarn src/_sass/bourbon $(shell find ./src -name '*' -not -path '*/_site*')
 	rm $@ || true
 	rm -rf .jekyll-cache/ || true
 	docker build --tag $(CONTAINER_NAME):latest .
