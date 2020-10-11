@@ -10,7 +10,6 @@ services:
     stdin_open: true
     tty: true
     command: 'cat'
-      # - ./nginx.conf:/etc/nginx/conf.d/00-config.conf
 
   nginx:
     image: nginx:alpine
