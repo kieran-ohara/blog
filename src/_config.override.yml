@@ -1,6 +1,4 @@
 # Global settings.
-source: src
-destination: src/_site
 timezone: Europe/London
 
 # Site settings.

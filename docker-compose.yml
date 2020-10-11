@@ -5,11 +5,14 @@ services:
     build:
       context: .
     volumes:
-      - ./:/app
-      - site:/app/src/_site
+      - ./src:/app
+      - site:/app/_site
     stdin_open: true
     tty: true
-    command: 'cat'
+    command: |
+      bundle exec jekyll build -V --trace
+      --config _config.yml,_config.override.yml
+      --watch
 
   nginx:
     image: nginx:alpine

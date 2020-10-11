@@ -17,8 +17,8 @@ COPY src/Gemfile Gemfile
 RUN bundle install
 
 COPY src/package.json package.json
-RUN yarn install --modules-folder ./src/_assets/yarn
+RUN yarn install --modules-folder ./_assets/yarn
 
-COPY ./ ./
+COPY src .
 
-RUN bundle exec jekyll build --trace --config src/_config.yml,_config.yml
+RUN bundle exec jekyll build -V --trace --config _config.yml,_config.override.yml
