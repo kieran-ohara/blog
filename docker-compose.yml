@@ -5,7 +5,7 @@ services:
     build:
       context: .
     volumes:
-      - ./src:/app/src
+      - ./:/app
       - site:/app/src/_site
     stdin_open: true
     tty: true
