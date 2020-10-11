@@ -19,7 +19,7 @@ src/_site: _config.yml src/_assets/yarn src/_sass/bourbon $(shell find ./src -na
 
 build:
 	docker-compose exec jekyll \
-		/bin/sh -c 'jekyll build --config src/_config.yml,_config.yml'
+		/bin/sh -c 'jekyll build -V --config src/_config.yml,_config.yml'
 
 S3_BUCKET:=s3://s3.kieranbamforth.me/apps/blog
 deploy: src/_site
