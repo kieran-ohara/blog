@@ -1,9 +1,10 @@
 version: '3'
 services:
   jekyll:
-    image: jekyll
+    image: blog-jekyll:latest
     build:
       context: .
+      dockerfile: Dockerfile.jekyll
     volumes:
       - ./src:/app
       - site:/app/_site
@@ -15,7 +16,10 @@ services:
       --watch
 
   nginx:
-    image: nginx:alpine
+    image: blog-nginx:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
     ports:
       - 8080:80
     volumes:

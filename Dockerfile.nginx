@@ -1,0 +1,6 @@
+FROM blog-jekyll:latest
+
+FROM nginx:alpine
+
+COPY --from=0 /app/_site /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
