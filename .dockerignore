@@ -1,4 +1,3 @@
 /src/_assets/yarn/
 /src/_sass/*
 !/src/_sass/_syntax-highlighting.scss
-/src/_site
