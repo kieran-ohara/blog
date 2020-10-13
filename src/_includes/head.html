@@ -16,6 +16,19 @@
   <meta name="twitter:title" content="{{ page.title | escape }}">
   <meta name="twitter:description" content="{{ page.description }}">
 
+  {% if page.thumb_image %}
+    {% if page.thumb_image contains '://' %}
+      <meta property="og:image" content="{{ page.thumb_image }}">
+      <meta name="twitter:image" content="{{ page.thumb_image }}">
+    {% else %}
+      <meta property="og:image" content="{{ site.url }}{% asset '{{ page.thumb_image }}' @path %}">
+      <meta name="twitter:image" content="{{ site.url }}{% asset '{{ page.thumb_image }}' @path %}">
+    {% endif %}
+  {% else %}
+    <meta property="og:image" content="{{ site.url }}{% asset og-image.jpg @path %}">
+    <meta name="twitter:image" content="{{ site.url }}{% asset og-image.jpg @path %}">
+  {% endif %}
+
   {% if page.path contains '_posts' %}
     <link rel="amphtml" href="{{ page.id | prepend: '/amp' | prepend: site.baseurl | prepend: site.url | append: '.html' }}">
   {% endif %}

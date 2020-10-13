@@ -180,5 +180,28 @@
                 </a>
             </li>
         {% endif %}
+        {% if site.theme_toggle == true %}
+            <li>
+                <a onclick="toggle()" title="Toggle Theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM2 8c0-3.314 2.686-6 6-6v12c-3.314 0-6-2.686-6-6z"></path>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
     </ul>
 </nav>
+
+{% if site.tag_nav_enabled %}
+    <ul class="header-tags {% if site.scrollappear_enabled %}scrollappear{% endif %}">
+        {% assign tags = site.tags | sort %}
+        {% for tag in tags %}
+            {% if forloop.index > 10 %}
+                <li>...</li>
+                <li><a href="/tags">Show all</a></li>
+                {% break %}
+            {% endif %}
+            <li><a href="{{ 'tag/' | relative_url }}{{ tag[0] }}">{{ tag[0] | capitalize }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
