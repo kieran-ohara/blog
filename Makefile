@@ -1,5 +1,5 @@
 ACCOUNT:=855277617897.dkr.ecr.eu-west-1.amazonaws.com
-IMAGE:=repository22e53bbd-q6vh7zuwolk9
+IMAGE:=blog-app
 TAG:=latest
 BUILDER:=builder
 PLATFORM:=linux/arm64
