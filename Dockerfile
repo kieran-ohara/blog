@@ -23,4 +23,10 @@ RUN mkdir -p ./_assets && mv node_modules ./_assets/yarn
 
 COPY src .
 
-RUN bundle exec jekyll build -V --trace --config _config.yml,_config.override.yml
+RUN rm -rf .jekyll-cache || true \
+        && bundle exec jekyll build -V --trace --config _config.yml,_config.override.yml #
+
+FROM nginx:alpine
+
+COPY --from=0 /app/_site /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
