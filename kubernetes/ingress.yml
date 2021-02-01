@@ -1,0 +1,39 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: blog-ingress
+  namespace: blog
+  labels:
+    app.kubernetes.io/instance: wordpress-1611967375
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - blog.k8s.nginx.kieranbamforth.me
+        - www.kieranbamforth.me
+      secretName: blog.k8s.nginx.kieranbamforth.me-tls
+  rules:
+    - host: blog.k8s.nginx.kieranbamforth.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-service
+                port:
+                  name: http
+    - host: www.kieranbamforth.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog-service
+                port:
+                  name: http
