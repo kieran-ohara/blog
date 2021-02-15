@@ -24,4 +24,8 @@ spec:
           resources:
             limits:
               memory: "20Mi"
+              cpu: 0.01
+            requests:
+              memory: "5Mi"
+              cpu: 0.001
       restartPolicy: Always
