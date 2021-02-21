@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+metadata:
+  name: blog
+build:
+  artifacts:
+  - image: kieranbamforth/blog
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes/deployment.yml
+    - kubernetes/ingress.yml
+    - kubernetes/namespace.yml
+    - kubernetes/service.yml
