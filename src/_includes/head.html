@@ -35,6 +35,8 @@
 
   <link href="{{ 'feed.xml' | absolute_url }}" type="application/rss+xml" rel="alternate" title="{{ site.name }} Last 10 blog posts" />
 
+  <link href="{% asset cormorant-garamond/Cormorant-Garamond-700.woff2 @path %}" type="font/woff2" rel="preload" as="font" crossorigin>
+  <link href="{% asset lato/Lato-regular.woff2 @path %}" type="font/woff2" rel="preload" as="font" crossorigin>
   {% if site.local_fonts %}
     {% asset fonts.css %}
   {% endif %}
