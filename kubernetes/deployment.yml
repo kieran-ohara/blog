@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: kieranbamforth/blog:2
+          image: kieranbamforth/blog:3
           ports:
             - containerPort: 80
           resources:
