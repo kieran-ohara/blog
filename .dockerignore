@@ -2,5 +2,4 @@ src/_site
 venv
 git
 tags
-node_modules
-
+src/node_modules
