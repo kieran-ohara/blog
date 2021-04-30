@@ -1,0 +1,10 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: blog
+  namespace: blog
+spec:
+  template:
+    spec:
+      containers:
+        - image: kieranbamforth/blog:latest
