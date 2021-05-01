@@ -25,7 +25,6 @@ jobs:
       - name: Deploy Blog
         uses: Azure/k8s-deploy@v1.4
         with:
-          namespace: 'myapp'
           manifests: |
               kubernetes/knative.yml
           images: 'kieranbamforth/blog:1'
