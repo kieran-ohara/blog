@@ -8,6 +8,9 @@ jobs:
   kubernetes:
     runs-on: self-hosted
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install Kubectl
         uses: azure/setup-kubectl@v1
         id: install
