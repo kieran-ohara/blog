@@ -1,6 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: "kieranbamforth.me",
+    title: 'kieranbamforth.me',
   },
-  plugins: [],
+  plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/jekyll/src/_posts`,
+      },
+    },
+    'gatsby-transformer-remark',
+  ],
+  polyfill: false,
 };

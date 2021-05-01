@@ -2,6 +2,7 @@
 layout: post
 title: Reflecting on the step up to leadership
 tags: leadership
+date: 2019-11-06
 ---
 
 In the quarter gone, I've been fortunate enough to try out my first leadership

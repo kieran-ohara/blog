@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Champion your passions!
+date: 2018-07-07
 ---
 
 _I did a talk for my team in the BBC about how to champion your ideals.
