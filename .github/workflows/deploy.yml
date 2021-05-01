@@ -23,7 +23,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
       - name: echo
-        run: cat ${{ env.KUBECONFIG }} > ${{ env.GITHUB_WORKSPACE}}/kubeconfig && export KUBECONFIG=${{ GITHUB_WORKSPACE }}/kubeconfig
+        run: cat ${{ env.KUBECONFIG }} > ${{ env.GITHUB_WORKSPACE}}/kubeconfig && export KUBECONFIG=${{ env.GITHUB_WORKSPACE }}/kubeconfig
 
       # - uses: chrnorm/deployment-action@releases/v1
       #   name: create github deployment
