@@ -33,11 +33,11 @@ jobs:
       #     target_url: http://my-app-url.com
       #     environment: production
 
-      - name: Create Knative Service
-        uses: redhat-actions/kn-service-manager@v1
-        with:
-          service_name: blog
-          container_image: kieranbamforth/blog:1
+      # - name: Create Knative Service
+      #   uses: redhat-actions/kn-service-manager@v1
+      #   with:
+      #     service_name: blog
+      #     container_image: kieranbamforth/blog:1
 
       # - name: update deployment status (success)
       #   if: success()
