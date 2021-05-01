@@ -23,7 +23,8 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
       - name: echo
-        run: cat ${{ env.KUBECONFIG }}
+        run: cat ${{ env.KUBECONFIG }} > ${{ env.GITHUB_WORKSPACE}}/kubeconfig && export KUBECONFIG=${{ GITHUBWORKSPACE }}/kubeconfig
+
       # - uses: chrnorm/deployment-action@releases/v1
       #   name: create github deployment
       #   id: deployment
@@ -32,11 +33,11 @@ jobs:
       #     target_url: http://my-app-url.com
       #     environment: production
 
-      # - name: Create Knative Service
-      #   uses: redhat-actions/kn-service-manager@v1
-      #   with:
-      #     service_name: blog
-      #     container_image: kieranbamforth/blog:1
+      - name: Create Knative Service
+        uses: redhat-actions/kn-service-manager@v1
+        with:
+          service_name: blog
+          container_image: kieranbamforth/blog:1
 
       # - name: update deployment status (success)
       #   if: success()
