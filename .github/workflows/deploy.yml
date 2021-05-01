@@ -22,33 +22,35 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-      - uses: chrnorm/deployment-action@releases/v1
-        name: create github deployment
-        id: deployment
-        with:
-          token: "${{ github.token }}"
-          target_url: http://my-app-url.com
-          environment: production
+      - name: echo
+        run: cat ${{ env.KUBECONFIG }}
+      # - uses: chrnorm/deployment-action@releases/v1
+      #   name: create github deployment
+      #   id: deployment
+      #   with:
+      #     token: "${{ github.token }}"
+      #     target_url: http://my-app-url.com
+      #     environment: production
 
-      - name: Create Knative Service
-        uses: redhat-actions/kn-service-manager@v1
-        with:
-          service_name: blog
-          container_image: kieranbamforth/blog:1
+      # - name: Create Knative Service
+      #   uses: redhat-actions/kn-service-manager@v1
+      #   with:
+      #     service_name: blog
+      #     container_image: kieranbamforth/blog:1
 
-      - name: update deployment status (success)
-        if: success()
-        uses: chrnorm/deployment-status@releases/v1
-        with:
-          token: "${{ github.token }}"
-          target_url: http://my-app-url.com
-          state: "success"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      # - name: update deployment status (success)
+      #   if: success()
+      #   uses: chrnorm/deployment-status@releases/v1
+      #   with:
+      #     token: "${{ github.token }}"
+      #     target_url: http://my-app-url.com
+      #     state: "success"
+      #     deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
-      - name: update deployment status (failure)
-        if: failure()
-        uses: chrnorm/deployment-status@releases/v1
-        with:
-          token: "${{ github.token }}"
-          target_url: http://my-app-url.com
-          state: "failure"
+#       - name: update deployment status (failure)
+#         if: failure()
+#         uses: chrnorm/deployment-status@releases/v1
+#         with:
+#           token: "${{ github.token }}"
+#           target_url: http://my-app-url.com
+#           state: "failure"
