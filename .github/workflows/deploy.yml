@@ -1,0 +1,60 @@
+name: lol
+
+on:
+  push:
+    branches: [runner]
+
+jobs:
+  kubernetes:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v1
+        id: install
+
+      - name: Kubernetes Context...
+        uses: azure/k8s-set-context@v1
+        id: setcontext
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: KN
+        uses: ./knative
+        id: kn
+      # - name: echo
+      #   run: cat ${{ env.KUBECONFIG }} > ${{ env.GITHUB_WORKSPACE }}/kubeconfig && export KUBECONFIG=${{ env.GITHUB_WORKSPACE }}/kubeconfig
+
+      # - uses: chrnorm/deployment-action@releases/v1
+      #   name: create github deployment
+      #   id: deployment
+      #   with:
+      #     token: "${{ github.token }}"
+      #     target_url: http://my-app-url.com
+      #     environment: production
+
+      # - name: Create Knative Service
+      #   uses: redhat-actions/kn-service-manager@v1
+      #   with:
+      #     service_name: blog
+      #     container_image: kieranbamforth/blog:1
+
+      # - name: update deployment status (success)
+      #   if: success()
+      #   uses: chrnorm/deployment-status@releases/v1
+      #   with:
+      #     token: "${{ github.token }}"
+      #     target_url: http://my-app-url.com
+      #     state: "success"
+      #     deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+#       - name: update deployment status (failure)
+#         if: failure()
+#         uses: chrnorm/deployment-status@releases/v1
+#         with:
+#           token: "${{ github.token }}"
+#           target_url: http://my-app-url.com
+#           state: "failure"
