@@ -30,13 +30,11 @@ jobs:
           target_url: http://my-app-url.com
           environment: production
 
-      - name: Deploy Blog
-        uses: Azure/k8s-deploy@v1.4
+      - name: Create Knative Service
+        uses: redhat-actions/kn-service-manager@v1
         with:
-          namespace: blog
-          manifests: |
-            kubernetes/knative.yml
-          images: "kieranbamforth/blog:1"
+          service_name: blog
+          container_image: kieranbamforth/blog:1
 
       - name: update deployment status (success)
         if: success()
