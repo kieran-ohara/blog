@@ -24,5 +24,5 @@ jobs:
         with:
           namespace: 'myapp'
           manifests: |
-              kubernetes/knative.yaml
+              kubernetes/knative.yml
           images: 'kieranbamforth/blog:1'
