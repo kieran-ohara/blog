@@ -12,9 +12,6 @@ paginate: 25
 
 # Build settings.
 markdown: kramdown
-exclude:
-  - Gemfile
-  - Gemfile.lock
 
 # Chalk settings.
 rss_enabled: true
