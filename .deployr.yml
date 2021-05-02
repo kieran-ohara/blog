@@ -1,6 +1,0 @@
-run:
-  ingress:
-    alb:
-      domain_names:
-        - name: www.kieranbamforth.me
-          create_dns_record: false
