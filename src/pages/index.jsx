@@ -41,6 +41,7 @@ export const query = graphql`
           }
           timeToRead
           excerpt(format: HTML, pruneLength: 260, truncate: false)
+          postPath: gatsbyPath(filePath: "/post/{MarkdownRemark.parent__(File)__name}")
         }
       }
     }
