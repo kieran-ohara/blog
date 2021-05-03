@@ -9,8 +9,10 @@ RUN npm install
 
 COPY .babelrc .
 COPY .eslintrc.js .
+COPY gatsby-browser.js .
 COPY gatsby-config.js .
 COPY gatsby-node.js .
+COPY gatsby-ssr.js .
 COPY jekyll/src/_posts ./jekyll/src/_posts
 COPY src ./src
 
