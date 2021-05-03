@@ -11,12 +11,12 @@ export default function Index({ data }) {
             excerpt,
             timeToRead,
             id,
-            postPath,
+            path,
           } = value.node;
 
           return (
             <li key={id}>
-              <a href={postPath}>{title}</a>
+              <a href={path}>{title}</a>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
               <p>{`${timeToRead} minutes ${tags}`}</p>
             </li>
@@ -41,7 +41,7 @@ export const query = graphql`
           }
           timeToRead
           excerpt(format: HTML, pruneLength: 260, truncate: false)
-          postPath: gatsbyPath(filePath: "/post/{MarkdownRemark.parent__(File)__name}")
+          path
         }
       }
     }
