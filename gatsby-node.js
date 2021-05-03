@@ -38,7 +38,7 @@ exports.createResolvers = ({ createResolvers }) => {
       path: {
         resolve(source) {
           const { postName } = fileNameComponents.fileNameComponents(source.fileAbsolutePath);
-          return `path/${postName}`;
+          return `post/${postName}`;
         },
       },
     },
