@@ -10,6 +10,15 @@ spec:
   - blog.k8s.istio.kieranbamforth.me
   - www.kieranbamforth.me
   http:
+  - name: "blog-gatsby"
+    match:
+      - uri:
+          exact: /
+    route:
+    - destination:
+        host: blog-service-gatsby.blog.svc.cluster.local
+        port:
+          number: 80
   - name: "blog"
     route:
     - destination:
