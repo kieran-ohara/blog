@@ -28,4 +28,15 @@ spec:
             requests:
               memory: "10Mi"
               cpu: 0.002
+        - name: app-gatsby
+          image: kieranbamforth/blog:gatsby-1
+          ports:
+            - containerPort: 81
+          resources:
+            limits:
+              memory: "10Mi"
+              cpu: 0.002
+            requests:
+              memory: "10Mi"
+              cpu: 0.002
       restartPolicy: Always
