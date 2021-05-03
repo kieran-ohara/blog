@@ -1,5 +1,5 @@
-src/_site
-venv
-git
+.git
+jekyll/*
+!jekyll/src/_posts
+node_modules
 tags
-src/node_modules

@@ -1,0 +1,5 @@
+src/_site
+venv
+git
+tags
+src/node_modules
