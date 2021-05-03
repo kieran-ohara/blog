@@ -21,4 +21,5 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
   },
+  ignorePatterns: ['node_modules', 'jekyll', 'public'],
 };

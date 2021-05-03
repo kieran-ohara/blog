@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "prebuild": "eslint src"
+    "prebuild": "eslint ."
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
