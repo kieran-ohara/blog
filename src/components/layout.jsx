@@ -14,10 +14,12 @@ export default function Layout({ children }) {
         }
         `}
       render={data => (
-        <header>
-          <h1>{data.site.siteMetadata.title}</h1>
-          <>{children}</>
-        </header>
+        <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+          <header>
+            <h1>{data.site.siteMetadata.title}</h1>
+            <>{children}</>
+          </header>
+        </div>
       )}
     />
   );
