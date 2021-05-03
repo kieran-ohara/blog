@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 export default function Index({ data }) {
   const prop = (
     <main>
-      <h1>{data.site.siteMetadata.title}</h1>
       <ul>
         {data.allMarkdownRemark.edges.map((value) => {
           const { title, tags } = value.node.frontmatter;
@@ -14,7 +13,6 @@ export default function Index({ data }) {
             id,
             path,
           } = value.node;
-
           return (
             <li key={id}>
               <a href={path}><h2>{title}</h2></a>
@@ -44,11 +42,6 @@ export const query = graphql`
           excerpt(format: HTML, pruneLength: 260, truncate: false)
           path
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
       }
     }
   }
