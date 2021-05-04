@@ -1,5 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import './reset.css';
+import './fonts.scss';
 
 export default function Layout({ children }) {
   return (
@@ -14,7 +16,7 @@ export default function Layout({ children }) {
         }
         `}
       render={data => (
-        <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+        <div>
           <header>
             <h1>{data.site.siteMetadata.title}</h1>
             <>{children}</>

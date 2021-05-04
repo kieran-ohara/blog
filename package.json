@@ -25,8 +25,10 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby-plugin-sass": "^4.4.0",
     "gatsby-source-filesystem": "^3.4.0",
-    "gatsby-transformer-remark": "^4.1.0"
+    "gatsby-transformer-remark": "^4.1.0",
+    "sass": "^1.32.12"
   },
   "dependencies": {
     "gatsby": "^3.4.0",

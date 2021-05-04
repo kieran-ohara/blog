@@ -1,0 +1,30 @@
+$base-line: 1.5;
+$base-font-size-px: 16;
+$base-line-px: $base-font-size-px * $base-line;
+
+@mixin rhythm($font-size-px, $line-height, $top-margin-lines: 1) {
+    font-size: ($font-size-px / $base-font-size-px) + rem;
+    line-height: ($line-height * $base-line-px) / $font-size-px;
+    margin-top: (($top-margin-lines * $base-line-px) / $base-font-size-px) + rem ;
+}
+
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+h1 {
+    @include rhythm(38, 2, 3);
+}
+
+h2, h3, h4, h5, h6 {
+    @include rhythm(24, 1);
+}
+
+p {
+    @include rhythm(16, 1);
+}
