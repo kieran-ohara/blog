@@ -29,7 +29,7 @@ spec:
               memory: "10Mi"
               cpu: 0.002
         - name: app-gatsby
-          image: kieranbamforth/blog:gatsby-3
+          image: kieranbamforth/blog:gatsby-4
           ports:
             - containerPort: 81
           resources:
