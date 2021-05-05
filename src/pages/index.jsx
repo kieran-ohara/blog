@@ -14,10 +14,10 @@ export default function Index({ data }) {
             path,
           } = value.node;
           return (
-            <li key={id}>
-              <a href={path}><h2>{title}</h2></a>
+            <li key={id} className="postcontainer">
+              <a href={path} className="posttitle"><h2>{title}</h2></a>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-              <p>{`${timeToRead} minutes ${tags}`}</p>
+              <p className="postinfo">{`${timeToRead} minute read - ${tags}`}</p>
             </li>
           );
         })}
