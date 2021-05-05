@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import './reset.css';
-import './fonts.scss';
+import './styles.scss';
 
 export default function Layout({ children }) {
   return (
