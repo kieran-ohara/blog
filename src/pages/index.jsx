@@ -6,7 +6,7 @@ export default function Index({ data }) {
     <main>
       <ul>
         {data.allMarkdownRemark.edges.map((value) => {
-          const { title, tags } = value.node.frontmatter;
+          const { title, tags, date } = value.node.frontmatter;
           const {
             excerpt,
             timeToRead,
@@ -17,7 +17,7 @@ export default function Index({ data }) {
             <li key={id} className="postcontainer">
               <a href={path} className="posttitle"><h2>{title}</h2></a>
               <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-              <p className="postinfo">{`${timeToRead} minute read - ${tags}`}</p>
+              <p className="postinfo">{`${date} - ${timeToRead} minute read - ${tags}`}</p>
             </li>
           );
         })}
@@ -37,6 +37,7 @@ export const query = graphql`
             title
             layout
             tags
+            date(formatString: "DD MMMM YYYY")
           }
           timeToRead
           excerpt(format: HTML, pruneLength: 260, truncate: false)
