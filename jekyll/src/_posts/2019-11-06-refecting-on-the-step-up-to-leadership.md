@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reflecting on the step up to leadership
+title: Reflecting on the step up to leadership.
 tags: leadership
 date: 2019-11-06
 ---
