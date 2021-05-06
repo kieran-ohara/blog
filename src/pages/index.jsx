@@ -40,7 +40,7 @@ export const query = graphql`
             date(formatString: "DD MMMM YYYY")
           }
           timeToRead
-          excerpt(format: HTML, pruneLength: 260, truncate: false)
+          excerpt(format: HTML, pruneLength: 300, truncate: false)
           path
         }
       }
