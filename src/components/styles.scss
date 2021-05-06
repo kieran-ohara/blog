@@ -104,8 +104,10 @@ strong {
 
 .posttitle {
     text-decoration: none;
+}
 
-    &:hover{
-        text-decoration: dashed underline ;
+@media only screen and (max-device-width: 414px) {
+    h1 {
+        @include rhythm(32, 2, 3);
     }
 }
