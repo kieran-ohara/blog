@@ -19,6 +19,15 @@ spec:
         host: blog-service-gatsby.blog.svc.cluster.local
         port:
           number: 80
+  - name: "blog-gatsby-static"
+    match:
+      - uri:
+          prefix: /static/
+    route:
+    - destination:
+        host: blog-service-gatsby.blog.svc.cluster.local
+        port:
+          number: 80
   - name: "blog"
     route:
     - destination:
