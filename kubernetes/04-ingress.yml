@@ -22,7 +22,7 @@ spec:
   - name: "blog-gatsby-static"
     match:
       - uri:
-          prefix: /static/
+          regex: "/(static/|page-data|webpack-|app-|framework-|component-).*"
     route:
     - destination:
         host: blog-service-gatsby.blog.svc.cluster.local
