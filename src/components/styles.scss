@@ -4,7 +4,6 @@ $base-line-px: $base-font-size-px * $base-line;
 $background-color: #227e8c;
 $foreground-color: #fff;
 $accent1: #e2eaae;
-$accent2: #d4bbe2;
 
 @mixin rhythm($font-size-px, $line-height, $top-margin-lines: 1) {
     font-size: ($font-size-px / $base-font-size-px) + rem;
@@ -65,9 +64,6 @@ body {
 a {
     color: $accent1;
 
-    &:visited {
-        color: $accent2;
-    }
 }
 
 h1 {
