@@ -109,5 +109,6 @@ strong {
 @media only screen and (max-device-width: 414px) {
     h1 {
         @include rhythm(32, 2, 3);
+        text-align: center;
     }
 }
