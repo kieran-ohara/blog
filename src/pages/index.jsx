@@ -16,7 +16,7 @@ export default function Index({ data }) {
           return (
             <li key={id} className="postcontainer">
               <a href={path} className="posttitle"><h2>{title}</h2></a>
-              <p dangerouslySetInnerHTML={{ __html: excerpt }} />
+              <div dangerouslySetInnerHTML={{ __html: excerpt }} />
               <p className="postinfo">{`${date} - ${timeToRead} minute read - ${tags}`}</p>
             </li>
           );
