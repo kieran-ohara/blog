@@ -1,3 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: blog-gateway
+  namespace: istio-system
+spec:
+  secretName: blog-gateway
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - www.kieranbamforth.me
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -9,7 +25,7 @@ spec:
   servers:
   - port:
       number: 80
-      name: http
+      name: redirect-vanity
       protocol: HTTP
     hosts:
        - irkb.me
@@ -18,6 +34,23 @@ spec:
        - www.kierans.blog
        - kieranbamforth.me
        - blog.k8s.istio.kieranbamforth.me
+  - port:
+      number: 80
+      name: redirect-http
+      protocol: HTTP
+    hosts:
+       - www.kieranbamforth.me
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+       - www.kieranbamforth.me
+    tls:
+      mode: SIMPLE
+      credentialName: blog-gateway
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -47,8 +80,8 @@ spec:
   gateways:
     - blog-gateway
   hosts:
-  - blog.k8s.istio.kieranbamforth.me
   - www.kieranbamforth.me
+  - blog.k8s.istio.kieranbamforth.me
   http:
   - name: "blog-gatsby"
     match:
