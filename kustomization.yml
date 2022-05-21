@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: apps
+
+resources:
+  # - ./kubernetes/01-redirects.yml
+  - ./kubernetes/02-deployment.yml
+  - ./kubernetes/03-service.yml
+  - ./kubernetes/04-ingress.yml

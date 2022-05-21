@@ -1,87 +1,14 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: blog-gateway
-  namespace: istio-system
-spec:
-  secretName: blog-gateway
-  usages:
-    - server auth
-    - client auth
-  dnsNames:
-  - www.kieranbamforth.me
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: blog-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - port:
-      number: 80
-      name: redirect-vanity
-      protocol: HTTP
-    hosts:
-       - irkb.me
-       - www.irkb.me
-       - kierans.blog
-       - www.kierans.blog
-       - kieranbamforth.me
-       - blog.k8s.istio.kieranbamforth.me
-  - port:
-      number: 80
-      name: redirect-http
-      protocol: HTTP
-    hosts:
-       - www.kieranbamforth.me
-    tls:
-      httpsRedirect: true
-  - port:
-      number: 443
-      name: https
-      protocol: HTTPS
-    hosts:
-       - www.kieranbamforth.me
-    tls:
-      mode: SIMPLE
-      credentialName: blog-gateway
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: redirect-service
+  name: blog-virtual-service
   namespace: istio-system
 spec:
   gateways:
-    - blog-gateway
+    - platform/default-gateway
   hosts:
-    - irkb.me
-    - www.irkb.me
-    - kierans.blog
-    - www.kierans.blog
-    - kieranbamforth.me
-  http:
-  - name: vanity-redirect
-    redirect:
-      authority: www.kieranbamforth.me
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: blog-vservice
-  namespace: istio-system
-spec:
-  gateways:
-    - blog-gateway
-  hosts:
-  - www.kieranbamforth.me
-  - blog.k8s.istio.kieranbamforth.me
+  - blog.k8s.kieranbamforth.me
   http:
   - name: "blog-gatsby"
     match:
@@ -89,7 +16,7 @@ spec:
           exact: /
     route:
     - destination:
-        host: blog-service-gatsby.blog.svc.cluster.local
+        host: blog-service-gatsby.apps.svc.cluster.local
         port:
           number: 80
   - name: "blog-gatsby-static"
@@ -98,12 +25,12 @@ spec:
           regex: "/(static/|page-data|webpack-|app-|framework-|component-).*"
     route:
     - destination:
-        host: blog-service-gatsby.blog.svc.cluster.local
+        host: blog-service-gatsby.apps.svc.cluster.local
         port:
           number: 80
   - name: "blog"
     route:
     - destination:
-        host: blog-service.blog.svc.cluster.local
+        host: blog-service.apps.svc.cluster.local
         port:
           number: 80

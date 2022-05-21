@@ -1,0 +1,55 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: blog-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: redirect-vanity
+      protocol: HTTP
+    hosts:
+       - irkb.me
+       - www.irkb.me
+       - kierans.blog
+       - www.kierans.blog
+  - port:
+      number: 80
+      name: redirect-http
+      protocol: HTTP
+    hosts:
+       - www.kieranbamforth.me
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+       - www.kieranbamforth.me
+    tls:
+      mode: SIMPLE
+      credentialName: blog-gateway
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: redirect-service
+  namespace: istio-system
+spec:
+  gateways:
+    - blog-gateway
+  hosts:
+    - irkb.me
+    - www.irkb.me
+    - kierans.blog
+    - www.kierans.blog
+    - kieranbamforth.me
+  http:
+  - name: vanity-redirect
+    redirect:
+      authority: www.kieranbamforth.me
