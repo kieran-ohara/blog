@@ -14,7 +14,7 @@ and [ChatGPT](https://en.wikipedia.org/wiki/ChatGPT) made regular sensational
 headlines ranging from admiration, tounge-in-cheek applications and of course
 controversy.
 
-As a distant cousin working in the software field I find it difficult to
-imagine that conversations surrounding these innovations will fade back into
-computer-science obscurity because their by-effects can already be observed in
-the microcosms of Art and Education industries.
+In a way, working in the software field, I would consider my industry a _distant cousin_
+I find it difficult to imagine that conversations surrounding these innovations
+will fade back into computer-science obscurity because their by-effects can
+already be observed in the microcosms of Art and Education industries.
