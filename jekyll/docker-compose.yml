@@ -1,8 +1,11 @@
 version: '3'
 services:
   blog:
-    image: kieranbamforth/blog:latest
+    image: kieranbamforth/blog:${TAG}
     build:
       context: .
-    ports:
-      - 8000:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.blog.rule=Host(`blog.docker-host.kieranbamforth.me`)"
+      - "traefik.http.routers.blog.entrypoints=web"
+      - "traefik.http.services.blog.loadbalancer.server.port=80"

@@ -1,2 +1,3 @@
 troposphere
 google-api-python-client
+ansible==7.0.0

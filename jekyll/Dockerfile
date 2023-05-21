@@ -5,10 +5,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV JEKYLL_ENV=production
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-        && apt-get install -y nodejs \
-        && gem install bundler \
-        && mkdir -p /app
+RUN gem install bundler -v 2.3.26  && mkdir -p /app
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
 
 WORKDIR /app
 
